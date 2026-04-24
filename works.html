@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="金子真理の全作品一覧。技術・制作形態・年度でフィルタリングできます。">
+  <meta name="author" content="金子 真理">
+
+  <!-- OGP -->
+  <meta property="og:title" content="Works | 金子 真理 ポートフォリオ">
+  <meta property="og:description" content="金子真理の全作品一覧ページ。">
+  <meta property="og:image" content="https://Planetalize.github.io/assets/images/ogp.jpg">
+  <meta property="og:url" content="https://Planetalize.github.io/works.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/works.css">
+  <link rel="stylesheet" href="css/utilities.css">
+
+  <title>Works | 金子 真理 ポートフォリオ</title>
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
+
+  <!-- Header (共通) -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">Mari Kaneko</a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <a class="site-nav__link" href="index.html#about"   data-i18n="nav.about">自己紹介</a>
+        <a class="site-nav__link" href="index.html#skills"  data-i18n="nav.skills">スキル</a>
+        <a class="site-nav__link is-active" href="works.html" data-i18n="nav.works" aria-current="page">作品</a>
+        <a class="site-nav__link" href="index.html#contact" data-i18n="nav.contact">連絡先</a>
+
+        <div class="lang-toggle" role="group" aria-label="言語切替">
+          <button class="lang-toggle__btn" data-lang="ja" aria-pressed="true">JA</button>
+          <button class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+
+      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
+    <div class="drawer__overlay" id="drawer-overlay"></div>
+    <div class="drawer__panel">
+      <button class="drawer__close" aria-label="メニューを閉じる">✕</button>
+      <nav class="drawer__nav" aria-label="モバイルナビゲーション">
+        <a class="drawer__nav-link" href="index.html#about"   data-i18n="nav.about">自己紹介</a>
+        <a class="drawer__nav-link" href="index.html#skills"  data-i18n="nav.skills">スキル</a>
+        <a class="drawer__nav-link" href="works.html"         data-i18n="nav.works">作品</a>
+        <a class="drawer__nav-link" href="index.html#contact" data-i18n="nav.contact">連絡先</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="言語切替">
+        <button class="lang-toggle__btn" data-lang="ja">JA</button>
+        <button class="lang-toggle__btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main id="main">
+
+    <!-- Page header -->
+    <div class="works-page__header">
+      <div class="container">
+        <nav class="works-page__breadcrumb" aria-label="パンくずリスト">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page" data-i18n="nav.works">作品</span>
+        </nav>
+        <h1 class="works-page__title" data-i18n="nav.works">作品一覧</h1>
+        <p class="works-page__count" id="works-count" aria-live="polite">
+          <span data-i18n="works.count" data-i18n-vars='{"count":"…"}'>全 … 件</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="works-page__body">
+
+        <!-- Filter panel -->
+        <aside aria-label="絞り込みフィルタ">
+          <div class="filter-panel">
+            <h2 class="filter-panel__heading" data-i18n="works.filter_heading">絞り込み</h2>
+
+            <!-- Technology -->
+            <div class="filter-group" id="filter-tech-group">
+              <p class="filter-group__label" data-i18n="works.filter_tech">技術</p>
+              <div class="filter-group__items" id="filter-tech-items">
+                <!-- JS で動的生成 -->
+              </div>
+            </div>
+
+            <!-- Team type -->
+            <div class="filter-group">
+              <p class="filter-group__label" data-i18n="works.filter_team">制作形態</p>
+              <div class="filter-group__items">
+                <label class="filter-radio">
+                  <input type="radio" name="filter-team" value="all" checked> <span data-i18n="works.filter_all">すべて</span>
+                </label>
+                <label class="filter-radio">
+                  <input type="radio" name="filter-team" value="solo"> <span data-i18n="works.team_solo">個人制作</span>
+                </label>
+                <label class="filter-radio">
+                  <input type="radio" name="filter-team" value="team"> <span data-i18n="works.team_team">チーム制作</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Year -->
+            <div class="filter-group" id="filter-year-group">
+              <p class="filter-group__label" data-i18n="works.filter_year">年度</p>
+              <div class="filter-group__items" id="filter-year-items">
+                <!-- JS で動的生成 -->
+              </div>
+            </div>
+
+            <!-- Awards only toggle -->
+            <div class="filter-group">
+              <label class="filter-toggle">
+                <input type="checkbox" id="filter-awards-only">
+                <span data-i18n="works.filter_awards_only">受賞作品のみ</span>
+              </label>
+            </div>
+
+            <button class="btn btn--ghost filter-reset" id="filter-reset">
+              フィルタをリセット
+            </button>
+          </div>
+        </aside>
+
+        <!-- Works area -->
+        <div>
+          <!-- Sort toolbar -->
+          <div class="works-toolbar">
+            <div></div>
+            <div class="works-toolbar__sort">
+              <label for="sort-select" data-i18n="works.sort">並び順</label>
+              <select id="sort-select">
+                <option value="newest" data-i18n="works.sort_newest">新しい順</option>
+                <option value="oldest" data-i18n="works.sort_oldest">古い順</option>
+                <option value="title"  data-i18n="works.sort_title">タイトル順</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Gallery grid -->
+          <div class="works-gallery" id="works-gallery" aria-live="polite">
+            <div class="loading-spinner" aria-label="読み込み中"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__inner">
+        <p class="site-footer__copy">
+          <span data-i18n="footer.copyright">© 2026 金子 真理. All rights reserved.</span>
+        </p>
+        <nav class="site-footer__links" aria-label="フッターナビゲーション">
+          <a class="site-footer__link" href="index.html#about"   data-i18n="nav.about">自己紹介</a>
+          <a class="site-footer__link" href="index.html#skills"  data-i18n="nav.skills">スキル</a>
+          <a class="site-footer__link" href="works.html"         data-i18n="nav.works">作品</a>
+          <a class="site-footer__link" href="index.html#contact" data-i18n="nav.contact">連絡先</a>
+        </nav>
+        <div class="site-footer__social" aria-label="ソーシャルリンク">
+          <a class="site-footer__link" href="https://github.com/Planetalize" target="_blank" rel="noopener">GitHub</a>
+          <a class="site-footer__link" href="mailto:hitowa1100@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Work detail modal -->
+  <dialog class="modal" id="work-modal" aria-labelledby="modal-title">
+    <div class="modal__header">
+      <h2 class="modal__title" id="modal-title"></h2>
+      <button class="modal__close" aria-label="閉じる" data-i18n-attr="aria-label:modal.close">✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__layout">
+        <div class="slideshow" id="modal-slideshow">
+          <div class="slideshow__track" id="slideshow-track"></div>
+          <button class="slideshow__btn slideshow__btn--prev" aria-label="前のスクリーンショット" id="slide-prev">‹</button>
+          <button class="slideshow__btn slideshow__btn--next" aria-label="次のスクリーンショット" id="slide-next">›</button>
+          <div class="slideshow__dots" id="slideshow-dots"></div>
+        </div>
+        <div class="modal__info" id="modal-info"></div>
+      </div>
+      <div id="modal-sections"></div>
+    </div>
+    <div class="modal__footer" id="modal-links"></div>
+  </dialog>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

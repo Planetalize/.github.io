@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ゲームプログラマー志望、金子真理のポートフォリオサイトです。C++/DirectX11によるネイティブゲーム開発を中心に、幅広い実装経験を紹介しています。">
+  <meta name="author" content="金子 真理">
+
+  <!-- OGP -->
+  <meta property="og:title" content="金子 真理 | ポートフォリオ">
+  <meta property="og:description" content="ゲームプログラマー志望、金子真理のポートフォリオサイトです。">
+  <meta property="og:image" content="https://Planetalize.github.io/assets/images/ogp.jpg">
+  <meta property="og:url" content="https://Planetalize.github.io/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+
+  <title>金子 真理 | ポートフォリオ</title>
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">Mari Kaneko</a>
+
+      <nav class="site-nav" aria-label="グローバルナビゲーション">
+        <a class="site-nav__link" href="#about"   data-i18n="nav.about">自己紹介</a>
+        <a class="site-nav__link" href="#skills"  data-i18n="nav.skills">スキル</a>
+        <a class="site-nav__link" href="#works"   data-i18n="nav.works">作品</a>
+        <a class="site-nav__link" href="#contact" data-i18n="nav.contact">連絡先</a>
+
+        <div class="lang-toggle" role="group" aria-label="言語切替">
+          <button class="lang-toggle__btn" data-lang="ja" aria-pressed="true">JA</button>
+          <button class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+
+      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
+    <div class="drawer__overlay" id="drawer-overlay"></div>
+    <div class="drawer__panel">
+      <button class="drawer__close" aria-label="メニューを閉じる">✕</button>
+      <nav class="drawer__nav" aria-label="モバイルナビゲーション">
+        <a class="drawer__nav-link" href="#about"   data-i18n="nav.about">自己紹介</a>
+        <a class="drawer__nav-link" href="#skills"  data-i18n="nav.skills">スキル</a>
+        <a class="drawer__nav-link" href="#works"   data-i18n="nav.works">作品</a>
+        <a class="drawer__nav-link" href="#contact" data-i18n="nav.contact">連絡先</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="言語切替">
+        <button class="lang-toggle__btn" data-lang="ja">JA</button>
+        <button class="lang-toggle__btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main id="main">
+
+    <!-- ── Hero ── -->
+    <section class="hero" id="hero" aria-label="ヒーロー">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__content">
+        <p class="hero__role en" data-i18n="hero.role">Game Programmer</p>
+        <h1 class="hero__name">金子 真理</h1>
+        <p class="hero__copy" data-i18n="hero.copy">つくる、あそぶ、みせる、楽しむ。</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="#works" data-i18n="hero.cta_works">Works を見る</a>
+          <a class="btn btn--outline btn--lg" href="assets/resume.pdf" download data-i18n="hero.cta_resume">履歴書をダウンロード</a>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span>scroll</span>
+        <span class="hero__scroll-arrow"></span>
+      </div>
+    </section>
+
+    <!-- ── About ── -->
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 class="section__heading" id="about-heading">
+          <span>Profile</span>
+          <span data-i18n="about.heading">自己紹介</span>
+        </h2>
+
+        <div class="about__inner">
+          <!-- Left: photo + bio -->
+          <div class="about__photo-wrap">
+            <div class="about__photo-placeholder" aria-label="プロフィール写真（準備中）">
+              <span>Photo</span>
+            </div>
+            <p class="about__bio" data-i18n="about.bio">
+              ゲームが好きで、プログラミングも好きです。C++とDirectX11でのネイティブゲーム開発を軸としながら、WebやツールなどあらゆるものをコードでHITわかるのが楽しいです。「動くものを作る」を信条に、毎日コツコツ積み上げています。
+            </p>
+          </div>
+
+          <!-- Right: info table -->
+          <div class="about__info-wrap">
+            <table class="about__info-table">
+              <tbody>
+                <tr>
+                  <th data-i18n="about.label_name">氏名</th>
+                  <td><span data-i18n="about_data.name">金子 真理</span>（<span data-i18n="about_data.name_kana">かねこ まり</span>）</td>
+                </tr>
+                <tr>
+                  <th data-i18n="about.label_school">学校</th>
+                  <td><span data-i18n="about_data.school">HAL東京</span> <span data-i18n="about_data.department">ゲーム4年制学科プログラマーコース</span> <span data-i18n="about_data.year">3</span>年次</td>
+                </tr>
+                <tr>
+                  <th data-i18n="about.label_graduation">卒業予定</th>
+                  <td data-i18n="about_data.graduation">2028年3月</td>
+                </tr>
+                <tr>
+                  <th data-i18n="about.label_desired_job">志望職種</th>
+                  <td data-i18n="about_data.desired_job">ゲームプログラマー</td>
+                </tr>
+                <tr>
+                  <th data-i18n="about.label_strengths">得意分野</th>
+                  <td data-i18n="about_data.strengths">ネイティブゲーム開発（C++/DirectX11）、Web開発（PHP/MySQL/JS）</td>
+                </tr>
+                <tr id="awards-row">
+                  <th data-i18n="about.label_awards">受賞歴</th>
+                  <td data-i18n="about_data.awards">複数受賞（詳細調整中）</td>
+                </tr>
+                <tr>
+                  <th data-i18n="about.label_certifications">資格</th>
+                  <td data-i18n="about_data.certifications">基本情報技術者試験</td>
+                </tr>
+                <tr>
+                  <th data-i18n="about.label_links">外部リンク</th>
+                  <td>
+                    <div class="about__links">
+                      <a class="about__ext-link" href="https://github.com/Planetalize" target="_blank" rel="noopener">
+                        GitHub ↗
+                      </a>
+                      <a class="about__ext-link" href="mailto:hitowa1100@gmail.com">
+                        Email ↗
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="about__cta">
+              <a class="btn btn--outline" href="assets/resume.pdf" download data-i18n="hero.cta_resume">
+                履歴書をダウンロード
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills ── -->
+    <section class="section section--muted" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <h2 class="section__heading" id="skills-heading">
+          <span>Skills</span>
+          <span data-i18n="skills.heading">スキル</span>
+        </h2>
+
+        <div class="skills__categories" id="skills-categories">
+          <!-- JS で動的生成 -->
+        </div>
+
+        <!-- Skill levels -->
+        <div class="skills__levels">
+          <h3 class="skills__levels-heading" data-i18n="skills.levels_heading">開発スキル</h3>
+          <div id="skill-levels-list">
+            <!-- JS で動的生成 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Works (excerpt) ── -->
+    <section class="section" id="works" aria-labelledby="works-heading">
+      <div class="container">
+        <h2 class="section__heading" id="works-heading">
+          <span>Works</span>
+          <span data-i18n="works.heading">作品</span>
+        </h2>
+
+        <div class="works-grid" id="featured-works">
+          <div class="loading-spinner" aria-label="読み込み中"></div>
+        </div>
+
+        <div class="works__see-all">
+          <a class="btn btn--ghost btn--lg" href="works.html" data-i18n="works.see_all">See All Works →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ── -->
+    <section class="section section--muted" id="contact" aria-labelledby="contact-heading">
+      <div class="container container--narrow">
+        <h2 class="section__heading" id="contact-heading">
+          <span>Contact</span>
+          <span data-i18n="contact.heading">連絡先</span>
+        </h2>
+
+        <p class="contact__copy" data-i18n="contact.copy">
+          お問い合わせは下記のリンクよりお願いいたします。
+        </p>
+
+        <div class="contact__links">
+          <a class="contact__link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub">
+            <img class="contact__link-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" loading="lazy">
+            <span class="contact__link-label en">GitHub</span>
+          </a>
+          <a class="contact__link" href="mailto:hitowa1100@gmail.com" aria-label="Email">
+            <svg class="contact__link-icon--svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <span class="contact__link-label en">Email</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__inner">
+        <p class="site-footer__copy">
+          <span data-i18n="footer.copyright">© 2026 金子 真理. All rights reserved.</span>
+        </p>
+        <nav class="site-footer__links" aria-label="フッターナビゲーション">
+          <a class="site-footer__link" href="#about"   data-i18n="nav.about">自己紹介</a>
+          <a class="site-footer__link" href="#skills"  data-i18n="nav.skills">スキル</a>
+          <a class="site-footer__link" href="#works"   data-i18n="nav.works">作品</a>
+          <a class="site-footer__link" href="#contact" data-i18n="nav.contact">連絡先</a>
+        </nav>
+        <div class="site-footer__social" aria-label="ソーシャルリンク">
+          <a class="site-footer__link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub">
+            GitHub
+          </a>
+          <a class="site-footer__link" href="mailto:hitowa1100@gmail.com" aria-label="Email">
+            Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Work detail modal -->
+  <dialog class="modal" id="work-modal" aria-labelledby="modal-title">
+    <div class="modal__header">
+      <h2 class="modal__title" id="modal-title"></h2>
+      <button class="modal__close" aria-label="閉じる" data-i18n-attr="aria-label:modal.close">✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__layout">
+        <div class="slideshow" id="modal-slideshow">
+          <div class="slideshow__track" id="slideshow-track"></div>
+          <button class="slideshow__btn slideshow__btn--prev" aria-label="前のスクリーンショット" id="slide-prev">‹</button>
+          <button class="slideshow__btn slideshow__btn--next" aria-label="次のスクリーンショット" id="slide-next">›</button>
+          <div class="slideshow__dots" id="slideshow-dots"></div>
+        </div>
+        <div class="modal__info" id="modal-info"></div>
+      </div>
+      <div id="modal-sections"></div>
+    </div>
+    <div class="modal__footer" id="modal-links"></div>
+  </dialog>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+[
+  {
+    "id": "guild-reception",
+    "title": {
+      "ja": "ギルド受付業務",
+      "en": "Guild Receptionist"
+    },
+    "subtitle": {
+      "ja": "Papers, Please 風ファンタジーシミュレーション",
+      "en": "Papers, Please-inspired fantasy simulation"
+    },
+    "year": 2026,
+    "period": {
+      "ja": "2026年4月〜",
+      "en": "Apr 2026 – present"
+    },
+    "featured": true,
+    "thumbnail": "assets/images/thumbs/guild.jpg",
+    "screenshots": [],
+    "video": null,
+    "tech": ["C++", "DirectX11", "Visual Studio 2022"],
+    "libraries": ["ImGui", "DirectXTK", "nlohmann/json"],
+    "tags": ["simulation", "document-verification"],
+    "teamType": "solo",
+    "teamSize": 1,
+    "role": {
+      "ja": "全工程",
+      "en": "All aspects"
+    },
+    "awards": [],
+    "controls": {
+      "ja": "マウス中心、キーボードショートカット対応",
+      "en": "Primarily mouse, keyboard shortcuts supported"
+    },
+    "summary": {
+      "ja": "26週のゲームサイクルと10分の実時間制限の中で、冒険者ギルドの受付業務を処理するシミュレーションゲーム。",
+      "en": "A simulation game where the player processes adventurer guild reception duties within a 26-week cycle and 10-minute real-time limit."
+    },
+    "highlights": {
+      "ja": [
+        "モジュラー合成による立ち絵システム（ランダム生成＋デバッグエディタ内蔵）",
+        "証拠提示型の交渉システム",
+        "DirectWriteによる日本語組版"
+      ],
+      "en": [
+        "Modular character portrait system (with randomization and built-in debug editor)",
+        "Evidence-based negotiation system",
+        "Japanese typography via DirectWrite"
+      ]
+    },
+    "struggles": {
+      "ja": "立ち絵のレイヤー管理に苦戦し、最終的にコンポーネント指向で設計しなおした",
+      "en": "Struggled with portrait layering; eventually refactored to a component-oriented design"
+    },
+    "download": null,
+    "links": {
+      "github": null,
+      "itchio": null,
+      "video": null,
+      "article": null
+    }
+  }
+]

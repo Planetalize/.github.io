@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "Mari Kaneko | Portfolio",
+    "description": "Portfolio of Mari Kaneko, an aspiring game programmer specializing in native game development with C++/DirectX11."
+  },
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "works": "Works",
+    "contact": "Contact"
+  },
+  "hero": {
+    "role": "Game Programmer",
+    "copy": "Create. Play. Show. Enjoy.",
+    "cta_works": "View Works",
+    "cta_resume": "Download Resume"
+  },
+  "about": {
+    "heading": "About",
+    "label_name": "Name",
+    "label_school": "School",
+    "label_graduation": "Graduation",
+    "label_desired_job": "Desired Role",
+    "label_strengths": "Strengths",
+    "label_awards": "Awards",
+    "label_certifications": "Certifications",
+    "label_links": "Links",
+    "bio": "I love games and I love coding. My focus is native game development with C++ and DirectX11, but I enjoy building anything I can run — web apps, tools, you name it. My motto: make something that moves."
+  },
+  "about_data": {
+    "name": "Mari Kaneko",
+    "name_kana": "かねこ まり",
+    "school": "HAL Tokyo",
+    "department": "Game Development (4-year) – Programmer Course",
+    "year": "3rd year",
+    "graduation": "March 2028",
+    "desired_job": "Game Programmer",
+    "strengths": "Native game dev (C++/DirectX11), Web dev (PHP/MySQL/JS)",
+    "awards": "Multiple awards (details TBD)",
+    "certifications": "Fundamental Information Technology Engineer Exam"
+  },
+  "skills": {
+    "heading": "Skills",
+    "categories": {
+      "languages": "Programming Languages",
+      "game_dev": "Graphics / Game Dev",
+      "web": "Web / Backend",
+      "tools": "Tools / Workflow",
+      "assets": "Asset Creation"
+    },
+    "levels_heading": "Skill Profile",
+    "level_labels": {
+      "design": "Design",
+      "problem_solving": "Problem Solving",
+      "implementation": "Implementation",
+      "performance": "Performance",
+      "teamwork": "Teamwork"
+    },
+    "level_descs": {
+      "design": "Component-oriented separation",
+      "problem_solving": "Identifying render bugs via RenderDoc",
+      "implementation": "Cellular automata, custom Markdown parser",
+      "performance": "Batch rendering, broad-phase collision optimization",
+      "teamwork": "Primarily solo; building team skills"
+    },
+    "level_stars": {
+      "design": 3,
+      "problem_solving": 4,
+      "implementation": 4,
+      "performance": 3,
+      "teamwork": 2
+    }
+  },
+  "works": {
+    "heading": "Works",
+    "see_all": "See All Works →",
+    "filter_heading": "Filter",
+    "filter_tech": "Technology",
+    "filter_team": "Team Type",
+    "filter_year": "Year",
+    "filter_awards_only": "Awards only",
+    "team_solo": "Solo",
+    "team_team": "Team",
+    "filter_all": "All",
+    "sort": "Sort",
+    "sort_newest": "Newest",
+    "sort_oldest": "Oldest",
+    "sort_title": "Title",
+    "count": "{{count}} works",
+    "count_filtered": "Showing {{count}}"
+  },
+  "modal": {
+    "close": "Close",
+    "prev": "Prev",
+    "next": "Next",
+    "summary": "Summary",
+    "highlights": "Technical Highlights",
+    "role": "My Role",
+    "struggles": "Challenges & Learnings",
+    "controls": "Controls",
+    "environment": "Environment",
+    "libraries": "Libraries",
+    "period": "Period",
+    "team": "Team",
+    "awards": "Awards",
+    "download": "Download",
+    "github": "GitHub",
+    "itchio": "itch.io",
+    "no_screenshots": "No screenshots available",
+    "solo": "Solo project",
+    "team": "Team project ({{size}} members)"
+  },
+  "contact": {
+    "heading": "Contact",
+    "copy": "Feel free to reach out via the links below."
+  },
+  "footer": {
+    "copyright": "© {{year}} Mari Kaneko. All rights reserved."
+  },
+  "page_404": {
+    "title": "Page Not Found",
+    "message": "The page you're looking for doesn't exist or has been moved.",
+    "back": "Back to Home"
+  }
+}

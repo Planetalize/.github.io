@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "金子 真理 | ポートフォリオ",
+    "description": "ゲームプログラマー志望、金子真理のポートフォリオサイトです。C++/DirectX11によるネイティブゲーム開発を中心に、幅広い実装経験を紹介しています。"
+  },
+  "nav": {
+    "about": "自己紹介",
+    "skills": "スキル",
+    "works": "作品",
+    "contact": "連絡先"
+  },
+  "hero": {
+    "role": "Game Programmer",
+    "copy": "つくる、あそぶ、みせる、楽しむ。",
+    "cta_works": "Works を見る",
+    "cta_resume": "履歴書をダウンロード"
+  },
+  "about": {
+    "heading": "自己紹介",
+    "label_name": "氏名",
+    "label_school": "学校",
+    "label_graduation": "卒業予定",
+    "label_desired_job": "志望職種",
+    "label_strengths": "得意分野",
+    "label_awards": "受賞歴",
+    "label_certifications": "資格",
+    "label_links": "外部リンク",
+    "bio": "ゲームが好きで、プログラミングも好きです。C++とDirectX11でのネイティブゲーム開発を軸としながら、WebやツールなどあらゆるものをコードでHITわかるのが楽しいです。「動くものを作る」を信条に、毎日コツコツ積み上げています。"
+  },
+  "about_data": {
+    "name": "金子 真理",
+    "name_kana": "かねこ まり",
+    "school": "HAL東京",
+    "department": "ゲーム4年制学科プログラマーコース",
+    "year": "3",
+    "graduation": "2028年3月",
+    "desired_job": "ゲームプログラマー",
+    "strengths": "ネイティブゲーム開発（C++/DirectX11）、Web開発（PHP/MySQL/JS）",
+    "awards": "複数受賞（詳細調整中）",
+    "certifications": "基本情報技術者試験"
+  },
+  "skills": {
+    "heading": "スキル",
+    "categories": {
+      "languages": "Programming Languages",
+      "game_dev": "Graphics / Game Dev",
+      "web": "Web / Backend",
+      "tools": "Tools / Workflow",
+      "assets": "Asset Creation"
+    },
+    "levels_heading": "開発スキル",
+    "level_labels": {
+      "design": "設計力",
+      "problem_solving": "問題解決力",
+      "implementation": "実装力",
+      "performance": "パフォーマンス意識",
+      "teamwork": "チーム開発"
+    },
+    "level_descs": {
+      "design": "コンポーネント指向での分離",
+      "problem_solving": "RenderDoc活用による描画不具合特定",
+      "implementation": "セルオートマトン実装、自作Markdownパーサー",
+      "performance": "バッチ描画、仮判定による衝突負荷軽減",
+      "teamwork": "個人制作中心、今後強化予定"
+    },
+    "level_stars": {
+      "design": 3,
+      "problem_solving": 4,
+      "implementation": 4,
+      "performance": 3,
+      "teamwork": 2
+    }
+  },
+  "works": {
+    "heading": "作品",
+    "see_all": "See All Works →",
+    "filter_heading": "絞り込み",
+    "filter_tech": "技術",
+    "filter_team": "制作形態",
+    "filter_year": "年度",
+    "filter_awards_only": "受賞作品のみ",
+    "team_solo": "個人制作",
+    "team_team": "チーム制作",
+    "filter_all": "すべて",
+    "sort": "並び順",
+    "sort_newest": "新しい順",
+    "sort_oldest": "古い順",
+    "sort_title": "タイトル順",
+    "count": "全 {{count}} 件",
+    "count_filtered": "{{count}} 件表示中"
+  },
+  "modal": {
+    "close": "閉じる",
+    "prev": "前へ",
+    "next": "次へ",
+    "summary": "概要",
+    "highlights": "技術的ハイライト",
+    "role": "担当範囲",
+    "struggles": "苦労した点・学び",
+    "controls": "操作方法",
+    "environment": "開発環境",
+    "libraries": "使用ライブラリ",
+    "period": "制作期間",
+    "team": "制作形態",
+    "awards": "受賞",
+    "download": "ダウンロード",
+    "github": "GitHub",
+    "itchio": "itch.io",
+    "no_screenshots": "スクリーンショットがありません",
+    "solo": "個人制作",
+    "team": "チーム制作（{{size}}人）"
+  },
+  "contact": {
+    "heading": "連絡先",
+    "copy": "お問い合わせは下記のリンクよりお願いいたします。"
+  },
+  "footer": {
+    "copyright": "© {{year}} 金子 真理. All rights reserved."
+  },
+  "page_404": {
+    "title": "ページが見つかりません",
+    "message": "お探しのページは存在しないか、移動した可能性があります。",
+    "back": "トップへ戻る"
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Planetalize.github.io/sitemap.xml
