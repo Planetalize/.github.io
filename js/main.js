@@ -1,1 +1,3 @@
-// entry point
+import { initNav } from './nav.js';
+
+initNav();
