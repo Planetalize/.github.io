@@ -13,6 +13,11 @@
   overflow: hidden;
   padding: var(--space-20) var(--space-6);
   padding-top: calc(var(--header-height-sp) + var(--space-20));
+  /* CSS-only subtle gradient background */
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 30%, var(--color-accent-soft) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, #EFF6FF 0%, transparent 60%),
+    var(--color-bg);
 }
 
 #hero-canvas {
@@ -389,4 +394,56 @@
   font-family: var(--font-sans-en);
   color: var(--color-text-secondary);
   font-weight: var(--fw-medium);
+}
+
+/* ── Skill icon (補足) ── */
+.skill-icon--fallback .skill-icon__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .skill-icon--fallback .skill-icon__img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ── Skill level モバイル対応 ── */
+@media (max-width: 599px) {
+  .skill-level {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .skill-level__label {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .skill-level__stars {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .skill-level__bar {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  .skill-level__desc {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    margin-top: 0;
+  }
 }

@@ -120,7 +120,7 @@
               <span>Photo</span>
             </div>
             <p class="about__bio" data-i18n="about.bio">
-              ゲームが好きで、プログラミングも好きです。C++とDirectX11でのネイティブゲーム開発を軸としながら、WebやツールなどあらゆるものをコードでHITわかるのが楽しいです。「動くものを作る」を信条に、毎日コツコツ積み上げています。
+              ゲームが好きで、プログラミングも好きです。C++とDirectX11でのネイティブゲーム開発を軸としながら、Webやツールなどあらゆるものをコードで作れるのが楽しいです。「動くものを作る」を信条に、毎日コツコツ積み上げています。
             </p>
           </div>
 
@@ -160,11 +160,28 @@
                   <th data-i18n="about.label_links">外部リンク</th>
                   <td>
                     <div class="about__links">
-                      <a class="about__ext-link" href="https://github.com/Planetalize" target="_blank" rel="noopener">
-                        GitHub ↗
+                      <a class="about__ext-link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub（新しいタブで開く）">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width="16" height="16" alt="" loading="lazy">
+                        GitHub
                       </a>
-                      <a class="about__ext-link" href="mailto:hitowa1100@gmail.com">
-                        Email ↗
+                      <!-- X（旧 Twitter）: URL 確定後に差し替え -->
+                      <a class="about__ext-link about__ext-link--placeholder" href="#" aria-label="X（準備中）" aria-disabled="true" tabindex="-1" style="opacity:.4;pointer-events:none;">
+                        <img src="https://cdn.simpleicons.org/x/1F2937" width="16" height="16" alt="" loading="lazy">
+                        X
+                      </a>
+                      <!-- Zenn: URL 確定後に差し替え -->
+                      <a class="about__ext-link about__ext-link--placeholder" href="#" aria-label="Zenn（準備中）" aria-disabled="true" tabindex="-1" style="opacity:.4;pointer-events:none;">
+                        <img src="https://cdn.simpleicons.org/zenn/3EA8FF" width="16" height="16" alt="" loading="lazy">
+                        Zenn
+                      </a>
+                      <!-- YouTube: URL 確定後に差し替え -->
+                      <a class="about__ext-link about__ext-link--placeholder" href="#" aria-label="YouTube（準備中）" aria-disabled="true" tabindex="-1" style="opacity:.4;pointer-events:none;">
+                        <img src="https://cdn.simpleicons.org/youtube/FF0000" width="16" height="16" alt="" loading="lazy">
+                        YouTube
+                      </a>
+                      <a class="about__ext-link" href="mailto:hitowa1100@gmail.com" aria-label="メールを送る">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Email
                       </a>
                     </div>
                   </td>
@@ -191,16 +208,165 @@
         </h2>
 
         <div class="skills__categories" id="skills-categories">
-          <!-- JS で動的生成 -->
-        </div>
 
-        <!-- Skill levels -->
-        <div class="skills__levels">
-          <h3 class="skills__levels-heading" data-i18n="skills.levels_heading">開発スキル</h3>
-          <div id="skill-levels-list">
-            <!-- JS で動的生成 -->
+          <!-- Programming Languages -->
+          <div class="skill-category">
+            <h3 class="skills__category-name" data-i18n="skills.categories.languages">Programming Languages</h3>
+            <ul class="skills__icons" role="list">
+              <li class="skill-icon" title="C++">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" loading="lazy">
+                <span class="skill-icon__label">C++</span>
+              </li>
+              <li class="skill-icon" title="C#">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" loading="lazy">
+                <span class="skill-icon__label">C#</span>
+              </li>
+              <li class="skill-icon" title="JavaScript">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
+                <span class="skill-icon__label">JavaScript</span>
+              </li>
+              <li class="skill-icon" title="PHP">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" loading="lazy">
+                <span class="skill-icon__label">PHP</span>
+              </li>
+              <li class="skill-icon" title="HTML5">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
+                <span class="skill-icon__label">HTML</span>
+              </li>
+              <li class="skill-icon" title="CSS3">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
+                <span class="skill-icon__label">CSS</span>
+              </li>
+              <li class="skill-icon" title="SQL">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy">
+                <span class="skill-icon__label">SQL</span>
+              </li>
+              <li class="skill-icon" title="C">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" loading="lazy">
+                <span class="skill-icon__label">C</span>
+              </li>
+              <li class="skill-icon" title="Python">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy">
+                <span class="skill-icon__label">Python</span>
+              </li>
+              <li class="skill-icon" title="XML">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xml/xml-original.svg" alt="XML" loading="lazy">
+                <span class="skill-icon__label">XML</span>
+              </li>
+              <li class="skill-icon" title="JSON">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg" alt="JSON" loading="lazy">
+                <span class="skill-icon__label">JSON</span>
+              </li>
+            </ul>
           </div>
-        </div>
+
+          <!-- Graphics / Game Dev -->
+          <div class="skill-category">
+            <h3 class="skills__category-name" data-i18n="skills.categories.game_dev">Graphics / Game Dev</h3>
+            <ul class="skills__icons" role="list">
+              <li class="skill-icon" title="DirectX 11">
+                <!-- DirectX: 自作SVG配置予定 → フォールバックテキスト -->
+                <span class="skill-icon__img skill-icon__img--text" aria-hidden="true"
+                      style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--color-bg-muted);border:1px solid var(--color-border);border-radius:4px;font-size:0.6rem;font-family:var(--font-mono);color:var(--color-text-muted);">DX11</span>
+                <span class="skill-icon__label">DirectX 11</span>
+              </li>
+              <li class="skill-icon" title="Visual Studio 2022">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio 2022" loading="lazy">
+                <span class="skill-icon__label">Visual Studio</span>
+              </li>
+              <li class="skill-icon" title="Unity">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" loading="lazy">
+                <span class="skill-icon__label">Unity</span>
+              </li>
+              <li class="skill-icon" title="Unreal Engine">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg" alt="Unreal Engine" loading="lazy">
+                <span class="skill-icon__label">Unreal Engine</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Web / Backend -->
+          <div class="skill-category">
+            <h3 class="skills__category-name" data-i18n="skills.categories.web">Web / Backend</h3>
+            <ul class="skills__icons" role="list">
+              <li class="skill-icon" title="PHP">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" loading="lazy">
+                <span class="skill-icon__label">PHP</span>
+              </li>
+              <li class="skill-icon" title="MySQL">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
+                <span class="skill-icon__label">MySQL</span>
+              </li>
+              <li class="skill-icon" title="Vanilla JavaScript">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="Vanilla JavaScript" loading="lazy">
+                <span class="skill-icon__label">Vanilla JS</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tools / Workflow -->
+          <div class="skill-category">
+            <h3 class="skills__category-name" data-i18n="skills.categories.tools">Tools / Workflow</h3>
+            <ul class="skills__icons" role="list">
+              <li class="skill-icon" title="Git">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" loading="lazy">
+                <span class="skill-icon__label">Git</span>
+              </li>
+              <li class="skill-icon" title="GitHub">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" loading="lazy">
+                <span class="skill-icon__label">GitHub</span>
+              </li>
+              <li class="skill-icon" title="Visual Studio Code">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="Visual Studio Code" loading="lazy">
+                <span class="skill-icon__label">VS Code</span>
+              </li>
+              <li class="skill-icon" title="Claude Code">
+                <img class="skill-icon__img" src="https://cdn.simpleicons.org/anthropic/1F2937" alt="Claude Code" loading="lazy">
+                <span class="skill-icon__label">Claude Code</span>
+              </li>
+              <li class="skill-icon" title="SourceTree">
+                <img class="skill-icon__img" src="https://cdn.simpleicons.org/sourcetree/0052CC" alt="SourceTree" loading="lazy">
+                <span class="skill-icon__label">SourceTree</span>
+              </li>
+              <li class="skill-icon" title="GitHub Copilot">
+                <img class="skill-icon__img" src="https://cdn.simpleicons.org/githubcopilot/1F2937" alt="GitHub Copilot" loading="lazy">
+                <span class="skill-icon__label">Copilot</span>
+              </li>
+              <li class="skill-icon" title="OpenAI Codex">
+                <img class="skill-icon__img" src="https://cdn.simpleicons.org/openai/1F2937" alt="OpenAI Codex" loading="lazy">
+                <span class="skill-icon__label">Codex</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Asset Creation -->
+          <div class="skill-category">
+            <h3 class="skills__category-name" data-i18n="skills.categories.assets">Asset Creation</h3>
+            <ul class="skills__icons" role="list">
+              <li class="skill-icon" title="Blender">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg" alt="Blender" loading="lazy">
+                <span class="skill-icon__label">Blender</span>
+              </li>
+              <li class="skill-icon" title="Aseprite">
+                <img class="skill-icon__img" src="https://cdn.simpleicons.org/aseprite/1F2937" alt="Aseprite" loading="lazy">
+                <span class="skill-icon__label">Aseprite</span>
+              </li>
+              <li class="skill-icon" title="Adobe Photoshop">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg" alt="Adobe Photoshop" loading="lazy">
+                <span class="skill-icon__label">Photoshop</span>
+              </li>
+              <li class="skill-icon" title="Adobe Illustrator">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg" alt="Adobe Illustrator" loading="lazy">
+                <span class="skill-icon__label">Illustrator</span>
+              </li>
+              <li class="skill-icon" title="Autodesk Maya">
+                <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maya/maya-original.svg" alt="Autodesk Maya" loading="lazy">
+                <span class="skill-icon__label">Maya</span>
+              </li>
+            </ul>
+          </div>
+
+        </div><!-- /.skills__categories -->
       </div>
     </section>
 
@@ -235,11 +401,26 @@
         </p>
 
         <div class="contact__links">
-          <a class="contact__link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub">
-            <img class="contact__link-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" loading="lazy">
+          <a class="contact__link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub（新しいタブで開く）">
+            <img class="contact__link-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="" loading="lazy">
             <span class="contact__link-label en">GitHub</span>
           </a>
-          <a class="contact__link" href="mailto:hitowa1100@gmail.com" aria-label="Email">
+          <!-- X: URL 確定後に href を差し替え -->
+          <span class="contact__link" aria-label="X（準備中）" style="opacity:.4;cursor:default;">
+            <img class="contact__link-icon" src="https://cdn.simpleicons.org/x/1F2937" alt="" loading="lazy">
+            <span class="contact__link-label en">X</span>
+          </span>
+          <!-- Zenn: URL 確定後に差し替え -->
+          <span class="contact__link" aria-label="Zenn（準備中）" style="opacity:.4;cursor:default;">
+            <img class="contact__link-icon" src="https://cdn.simpleicons.org/zenn/3EA8FF" alt="" loading="lazy">
+            <span class="contact__link-label en">Zenn</span>
+          </span>
+          <!-- YouTube: URL 確定後に差し替え -->
+          <span class="contact__link" aria-label="YouTube（準備中）" style="opacity:.4;cursor:default;">
+            <img class="contact__link-icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt="" loading="lazy">
+            <span class="contact__link-label en">YouTube</span>
+          </span>
+          <a class="contact__link" href="mailto:hitowa1100@gmail.com" aria-label="メールを送る">
             <svg class="contact__link-icon--svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
@@ -265,12 +446,8 @@
           <a class="site-footer__link" href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="site-footer__social" aria-label="ソーシャルリンク">
-          <a class="site-footer__link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub">
-            GitHub
-          </a>
-          <a class="site-footer__link" href="mailto:hitowa1100@gmail.com" aria-label="Email">
-            Email
-          </a>
+          <a class="site-footer__link en" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a class="site-footer__link en" href="mailto:hitowa1100@gmail.com" aria-label="Email">Email</a>
         </div>
       </div>
     </div>
