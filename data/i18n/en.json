@@ -115,7 +115,8 @@
     "copy": "Feel free to reach out via the links below."
   },
   "footer": {
-    "copyright": "© {{year}} Mari Kaneko. All rights reserved."
+    "copyright": "© {{year}} Mari Kaneko. All rights reserved.",
+    "copyright_short": "© {{year}} Mari Kaneko"
   },
   "page_404": {
     "title": "Page Not Found",

@@ -53,9 +53,10 @@
   padding-block: var(--space-8);
 }
 
-@media (min-width: 1024px) {
+/* サイドバーが 264px 取るので、絞り込みを横に置くのは 1280px から */
+@media (min-width: 1280px) {
   .works-page__body {
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 240px 1fr;
     align-items: start;
   }
 }
@@ -69,10 +70,10 @@
   padding: var(--space-6);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .filter-panel {
     position: sticky;
-    top: calc(var(--header-height-pc) + var(--space-6));
+    top: var(--space-6);
   }
 }
 
@@ -233,7 +234,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
   .works-gallery {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }

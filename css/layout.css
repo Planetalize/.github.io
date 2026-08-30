@@ -1,3 +1,174 @@
+/* ══════════════════════════════════════════
+   Shell — サイドバー ＋ 本文カラムの土台
+
+   1024px 以上: 左にインクのサイドバーが常駐し、ヘッダーは隠れる
+   1024px 未満: サイドバーが隠れ、従来のヘッダー＋ドロワーになる
+   ══════════════════════════════════════════ */
+.shell {
+  /* サイドバーを右に置きたいときは row-reverse にする */
+  flex-direction: row;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.shell__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell__main > main {
+  flex: 1 0 auto;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    display: block;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    flex-shrink: 0;
+    width: 264px;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    background: var(--ink-900);
+    color: var(--gold-400);
+  }
+
+  /* PC ではヘッダーの代わりにサイドバーが立つ */
+  .site-header {
+    display: none;
+  }
+}
+
+.sidebar__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-height: 100%;
+  padding: var(--space-8) var(--space-6);
+}
+
+.sidebar__brand {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+}
+
+.sidebar__brand-name {
+  font-family: var(--font-sans-en);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  color: var(--gold-400);
+}
+
+.sidebar__brand-role {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: rgba(248, 204, 55, 0.6);
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sidebar__link {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  transition: background var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.sidebar__link-en {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+
+.sidebar__link-ja {
+  display: block;
+  font-size: var(--fs-xs);
+  color: rgba(248, 204, 55, 0.55);
+}
+
+.sidebar__link:hover {
+  border-color: rgba(248, 204, 55, 0.5);
+  transform: translateX(3px);
+}
+
+/* 現在地は金のブロックで反転させる */
+.sidebar__link.is-active {
+  background: var(--gold-400);
+  border-color: var(--gold-400);
+  box-shadow: 4px 4px 0 rgba(248, 204, 55, 0.22);
+}
+
+.sidebar__link.is-active .sidebar__link-en { color: var(--ink-900); }
+.sidebar__link.is-active .sidebar__link-ja { color: var(--ink-500); }
+
+.sidebar__foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+/* 暗い面ではトグルの枠と文字を金に反転させる */
+.sidebar .lang-toggle {
+  border-color: var(--gold-400);
+}
+
+.sidebar .lang-toggle__btn {
+  color: rgba(248, 204, 55, 0.7);
+}
+
+.sidebar__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.sidebar__social-link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  color: rgba(248, 204, 55, 0.82);
+  transition: color var(--duration-fast);
+}
+
+.sidebar__social-link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.sidebar__copy {
+  font-size: var(--fs-xs);
+  line-height: var(--lh-snug);
+  color: rgba(248, 204, 55, 0.45);
+}
+
 /* ── Container ── */
 .container {
   width: min(100% - var(--space-8), 1280px);
@@ -51,78 +222,6 @@
   font-weight: var(--fw-bold);
   color: var(--color-text);
   letter-spacing: var(--ls-tight);
-}
-
-/* ロゴマーク: 画像を入れなければ CSS で描いた菱形が出る */
-.site-header__mark {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  background: var(--ink-900);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.site-header__mark::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: var(--gold-400);
-  transform: rotate(45deg);
-}
-
-.site-header__mark:has(img)::before {
-  content: none;
-}
-
-.site-header__mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.site-header__logo:hover .site-header__mark {
-  transform: rotate(90deg);
-}
-
-/* ── Desktop Nav ── */
-.site-nav {
-  display: none;
-  align-items: center;
-  gap: var(--space-8);
-}
-
-.site-nav__link {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  color: var(--color-text-secondary);
-  transition: color var(--duration-fast) var(--ease-out);
-  position: relative;
-}
-
-.site-nav__link::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.site-nav__link:hover,
-.site-nav__link.is-active {
-  color: var(--color-accent);
-}
-
-.site-nav__link.is-active::after {
-  transform: scaleX(1);
 }
 
 /* ── Lang toggle ── */
@@ -249,6 +348,11 @@
   gap: var(--space-6);
 }
 
+/* パネルは縦の flex なので、放っておくとトグルが横いっぱいに伸びる */
+.drawer__panel .lang-toggle {
+  align-self: flex-start;
+}
+
 .drawer__nav-link {
   font-size: var(--fs-lg);
   font-weight: var(--fw-medium);
@@ -261,19 +365,7 @@
 }
 
 /* ── Desktop breakpoint ── */
-@media (min-width: 1024px) {
-  .site-header {
-    height: var(--header-height-pc);
-  }
-
-  .site-nav {
-    display: flex;
-  }
-
-  .hamburger {
-    display: none;
-  }
-}
+/* ヘッダーは 1024px 未満でのみ出る（それ以上はサイドバー） */
 
 /* ── Footer ── */
 .site-footer {

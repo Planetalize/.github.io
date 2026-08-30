@@ -17,18 +17,6 @@ body {
   background-color: var(--color-bg);
 }
 
-/* 内容が短いページでもフッターが下端に付くようにする */
-body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
-
-body > main {
-  flex: 1 0 auto;
-}
-
 body {
   font-family: var(--font-sans-ja);
   font-size: var(--fs-base);

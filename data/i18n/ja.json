@@ -115,7 +115,8 @@
     "copy": "お問い合わせは下記のリンクよりお願いいたします。"
   },
   "footer": {
-    "copyright": "© {{year}} 金子 真理. All rights reserved."
+    "copyright": "© {{year}} 金子 真理. All rights reserved.",
+    "copyright_short": "© {{year}} 金子 真理"
   },
   "page_404": {
     "title": "ページが見つかりません",

@@ -124,9 +124,10 @@
   50%       { transform: translateX(-50%) translateY(8px); }
 }
 
+/* PC ではヘッダーが消えてサイドバーになるので、その上余白は不要 */
 @media (min-width: 1024px) {
   .hero {
-    padding-top: calc(var(--header-height-pc) + var(--space-20));
+    padding-top: var(--space-20);
   }
 }
 

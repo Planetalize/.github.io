@@ -56,6 +56,28 @@ node tools/dev-server.mjs
 枠線は `--border-hard`（2px インク）、影は色を持たないハードシャドウ
 （`--shadow-md` ほか）で「版ズレ印刷」の質感に寄せている。
 
+## 画面構成
+
+ページは `.shell` = サイドバー ＋ 本文カラム の2枚構成。
+
+```html
+<div class="shell">
+  <aside class="sidebar"> ... </aside>          <!-- 1024px 以上でのみ表示 -->
+  <div class="shell__main">
+    <header class="site-header"> ... </header>  <!-- 1024px 未満でのみ表示 -->
+    <main id="main"> ... </main>
+    <footer class="site-footer"> ... </footer>
+  </div>
+</div>
+```
+
+- **1024px 以上**: 左にインクのサイドバーが常駐する（`position: sticky` で貼り付く）。ヘッダーは消える
+- **1024px 未満**: サイドバーが消え、ヘッダー＋ハンバーガー／ドロワーに切り替わる
+- 現在地は `.sidebar__link.is-active` が金のブロックに反転して示す。
+  `js/nav.js` のスクロールスパイが `.sidebar__link, .drawer__nav-link` に `is-active` を付ける
+- **サイドバーを右に置きたいときは、`css/layout.css` の `.shell` の
+  `flex-direction` を `row-reverse` にするだけ**
+
 ## 装飾のしくみ（css/decor.css）
 
 ### 流れる背景模様

@@ -49,194 +49,235 @@
   <!-- Skip link -->
   <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
 
-  <!-- Header (共通) -->
-  <header class="site-header" id="site-header">
-    <div class="site-header__inner container">
-      <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">
-        <!-- ロゴ画像を使う場合はこの span の中に <img src="..." alt=""> を入れる -->
-        <span class="site-header__mark" aria-hidden="true"></span>
-        Mari Kaneko
-      </a>
+  <div class="shell">
 
-      <nav class="site-nav" aria-label="グローバルナビゲーション">
-        <a class="site-nav__link" href="index.html#about"   data-i18n="nav.about">About</a>
-        <a class="site-nav__link" href="index.html#skills"  data-i18n="nav.skills">Skills</a>
-        <a class="site-nav__link is-active" href="works.html" data-i18n="nav.works" aria-current="page">Works</a>
-        <a class="site-nav__link" href="index.html#contact" data-i18n="nav.contact">Contact</a>
+    <!--
+      Sidebar: PC 用の常設ナビ。
+      1024px 未満ではこれが隠れ、上のヘッダー＋ドロワーに切り替わる。
+    -->
+    <aside class="sidebar" aria-label="サイドナビゲーション">
+      <div class="sidebar__inner">
+        <a class="sidebar__brand" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">
+          <!-- ロゴ画像を使う場合はこの span の中に <img src="..." alt=""> を入れる -->
+          <span class="brand-mark brand-mark--lg brand-mark--invert" aria-hidden="true"></span>
+          <span class="sidebar__brand-name">Mari Kaneko</span>
+          <span class="sidebar__brand-role" data-i18n="hero.role">Game Programmer</span>
+        </a>
 
+        <nav class="sidebar__nav" aria-label="グローバルナビゲーション">
+          <a class="sidebar__link" href="index.html#about">
+            <span class="sidebar__link-en">About</span>
+            <span class="sidebar__link-ja" data-i18n="nav.about">自己紹介</span>
+          </a>
+          <a class="sidebar__link" href="index.html#skills">
+            <span class="sidebar__link-en">Skills</span>
+            <span class="sidebar__link-ja" data-i18n="nav.skills">スキル</span>
+          </a>
+          <a class="sidebar__link is-active" href="works.html" aria-current="page">
+            <span class="sidebar__link-en">Works</span>
+            <span class="sidebar__link-ja" data-i18n="nav.works">作品</span>
+          </a>
+          <a class="sidebar__link" href="index.html#contact">
+            <span class="sidebar__link-en">Contact</span>
+            <span class="sidebar__link-ja" data-i18n="nav.contact">連絡先</span>
+          </a>
+        </nav>
+
+        <div class="sidebar__foot">
+          <div class="lang-toggle" role="group" aria-label="言語切替">
+            <button class="lang-toggle__btn" data-lang="ja" aria-pressed="true">JA</button>
+            <button class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <div class="sidebar__social">
+            <a class="sidebar__social-link" href="https://github.com/Planetalize" target="_blank" rel="noopener">GitHub</a>
+            <a class="sidebar__social-link" href="mailto:hitowa1100@gmail.com">Email</a>
+          </div>
+          <p class="sidebar__copy" data-i18n="footer.copyright_short">© 2026 金子 真理</p>
+        </div>
+      </div>
+    </aside>
+
+    <div class="shell__main">
+
+    <!-- Header (共通) -->
+    <header class="site-header" id="site-header">
+      <div class="site-header__inner container">
+        <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">
+          <!-- ロゴ画像を使う場合はこの span の中に <img src="..." alt=""> を入れる -->
+          <span class="brand-mark" aria-hidden="true"></span>
+          Mari Kaneko
+        </a>
+
+        <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
+      <div class="drawer__overlay" id="drawer-overlay"></div>
+      <div class="drawer__panel">
+        <button class="drawer__close" aria-label="メニューを閉じる">✕</button>
+        <nav class="drawer__nav" aria-label="モバイルナビゲーション">
+          <a class="drawer__nav-link" href="index.html#about"   data-i18n="nav.about">About</a>
+          <a class="drawer__nav-link" href="index.html#skills"  data-i18n="nav.skills">Skills</a>
+          <a class="drawer__nav-link" href="works.html"         data-i18n="nav.works">Works</a>
+          <a class="drawer__nav-link" href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
         <div class="lang-toggle" role="group" aria-label="言語切替">
-          <button class="lang-toggle__btn" data-lang="ja" aria-pressed="true">JA</button>
-          <button class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
+          <button class="lang-toggle__btn" data-lang="ja">JA</button>
+          <button class="lang-toggle__btn" data-lang="en">EN</button>
         </div>
-      </nav>
-
-      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
-        <span class="hamburger__line"></span>
-        <span class="hamburger__line"></span>
-        <span class="hamburger__line"></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
-    <div class="drawer__overlay" id="drawer-overlay"></div>
-    <div class="drawer__panel">
-      <button class="drawer__close" aria-label="メニューを閉じる">✕</button>
-      <nav class="drawer__nav" aria-label="モバイルナビゲーション">
-        <a class="drawer__nav-link" href="index.html#about"   data-i18n="nav.about">About</a>
-        <a class="drawer__nav-link" href="index.html#skills"  data-i18n="nav.skills">Skills</a>
-        <a class="drawer__nav-link" href="works.html"         data-i18n="nav.works">Works</a>
-        <a class="drawer__nav-link" href="index.html#contact" data-i18n="nav.contact">Contact</a>
-      </nav>
-      <div class="lang-toggle" role="group" aria-label="言語切替">
-        <button class="lang-toggle__btn" data-lang="ja">JA</button>
-        <button class="lang-toggle__btn" data-lang="en">EN</button>
       </div>
     </div>
-  </div>
 
-  <!-- Main -->
-  <main id="main">
+    <!-- Main -->
+    <main id="main">
 
-    <!-- Page header -->
-    <div class="works-page__header">
-      <div class="pattern pattern--stripe pattern--faint" aria-hidden="true"></div>
+      <!-- Page header -->
+      <div class="works-page__header">
+        <div class="pattern pattern--stripe pattern--faint" aria-hidden="true"></div>
+        <div class="container">
+          <nav class="works-page__breadcrumb" aria-label="パンくずリスト">
+            <a href="index.html">Home</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page" data-i18n="nav.works">作品</span>
+          </nav>
+          <h1 class="works-page__title" data-i18n="nav.works">作品一覧</h1>
+          <p class="works-page__count" id="works-count" aria-live="polite">
+            <span data-i18n="works.count" data-i18n-vars='{"count":"…"}'>全 … 件</span>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="tape-band">
+        <div class="tape tape--tilt" aria-hidden="true">
+          <div class="tape__track">
+            <div class="tape__group">
+              <span class="tape__item">C++ / DirectX11</span>
+              <span class="tape__item">Game Programmer</span>
+              <span class="tape__item">HAL Tokyo</span>
+              <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
+              <span class="tape__item">Make Something That Moves</span>
+            </div>
+            <div class="tape__group">
+              <span class="tape__item">C++ / DirectX11</span>
+              <span class="tape__item">Game Programmer</span>
+              <span class="tape__item">HAL Tokyo</span>
+              <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
+              <span class="tape__item">Make Something That Moves</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="container">
-        <nav class="works-page__breadcrumb" aria-label="パンくずリスト">
-          <a href="index.html">Home</a>
-          <span aria-hidden="true">›</span>
-          <span aria-current="page" data-i18n="nav.works">作品</span>
-        </nav>
-        <h1 class="works-page__title" data-i18n="nav.works">作品一覧</h1>
-        <p class="works-page__count" id="works-count" aria-live="polite">
-          <span data-i18n="works.count" data-i18n-vars='{"count":"…"}'>全 … 件</span>
-        </p>
-      </div>
-    </div>
+        <div class="works-page__body">
 
+          <!-- Filter panel -->
+          <aside aria-label="絞り込みフィルタ">
+            <div class="filter-panel">
+              <h2 class="filter-panel__heading" data-i18n="works.filter_heading">絞り込み</h2>
 
-    <div class="tape-band">
-      <div class="tape tape--tilt" aria-hidden="true">
-        <div class="tape__track">
-          <div class="tape__group">
-            <span class="tape__item">C++ / DirectX11</span>
-            <span class="tape__item">Game Programmer</span>
-            <span class="tape__item">HAL Tokyo</span>
-            <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
-            <span class="tape__item">Make Something That Moves</span>
-          </div>
-          <div class="tape__group">
-            <span class="tape__item">C++ / DirectX11</span>
-            <span class="tape__item">Game Programmer</span>
-            <span class="tape__item">HAL Tokyo</span>
-            <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
-            <span class="tape__item">Make Something That Moves</span>
-          </div>
-        </div>
-      </div>
-    </div>
+              <!-- Technology -->
+              <div class="filter-group" id="filter-tech-group">
+                <p class="filter-group__label" data-i18n="works.filter_tech">技術</p>
+                <div class="filter-group__items" id="filter-tech-items">
+                  <!-- JS で動的生成 -->
+                </div>
+              </div>
 
-    <div class="container">
-      <div class="works-page__body">
+              <!-- Team type -->
+              <div class="filter-group">
+                <p class="filter-group__label" data-i18n="works.filter_team">制作形態</p>
+                <div class="filter-group__items">
+                  <label class="filter-radio">
+                    <input type="radio" name="filter-team" value="all" checked> <span data-i18n="works.filter_all">すべて</span>
+                  </label>
+                  <label class="filter-radio">
+                    <input type="radio" name="filter-team" value="solo"> <span data-i18n="works.team_solo">個人制作</span>
+                  </label>
+                  <label class="filter-radio">
+                    <input type="radio" name="filter-team" value="team"> <span data-i18n="works.team_team">チーム制作</span>
+                  </label>
+                </div>
+              </div>
 
-        <!-- Filter panel -->
-        <aside aria-label="絞り込みフィルタ">
-          <div class="filter-panel">
-            <h2 class="filter-panel__heading" data-i18n="works.filter_heading">絞り込み</h2>
+              <!-- Year -->
+              <div class="filter-group" id="filter-year-group">
+                <p class="filter-group__label" data-i18n="works.filter_year">年度</p>
+                <div class="filter-group__items" id="filter-year-items">
+                  <!-- JS で動的生成 -->
+                </div>
+              </div>
 
-            <!-- Technology -->
-            <div class="filter-group" id="filter-tech-group">
-              <p class="filter-group__label" data-i18n="works.filter_tech">技術</p>
-              <div class="filter-group__items" id="filter-tech-items">
-                <!-- JS で動的生成 -->
+              <!-- Awards only toggle -->
+              <div class="filter-group">
+                <label class="filter-toggle">
+                  <input type="checkbox" id="filter-awards-only">
+                  <span data-i18n="works.filter_awards_only">受賞作品のみ</span>
+                </label>
+              </div>
+
+              <button class="btn btn--ghost filter-reset" id="filter-reset">
+                フィルタをリセット
+              </button>
+            </div>
+          </aside>
+
+          <!-- Works area -->
+          <div>
+            <!-- Sort toolbar -->
+            <div class="works-toolbar">
+              <div></div>
+              <div class="works-toolbar__sort">
+                <label for="sort-select" data-i18n="works.sort">並び順</label>
+                <select id="sort-select">
+                  <option value="newest" data-i18n="works.sort_newest">新しい順</option>
+                  <option value="oldest" data-i18n="works.sort_oldest">古い順</option>
+                  <option value="title"  data-i18n="works.sort_title">タイトル順</option>
+                </select>
               </div>
             </div>
 
-            <!-- Team type -->
-            <div class="filter-group">
-              <p class="filter-group__label" data-i18n="works.filter_team">制作形態</p>
-              <div class="filter-group__items">
-                <label class="filter-radio">
-                  <input type="radio" name="filter-team" value="all" checked> <span data-i18n="works.filter_all">すべて</span>
-                </label>
-                <label class="filter-radio">
-                  <input type="radio" name="filter-team" value="solo"> <span data-i18n="works.team_solo">個人制作</span>
-                </label>
-                <label class="filter-radio">
-                  <input type="radio" name="filter-team" value="team"> <span data-i18n="works.team_team">チーム制作</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Year -->
-            <div class="filter-group" id="filter-year-group">
-              <p class="filter-group__label" data-i18n="works.filter_year">年度</p>
-              <div class="filter-group__items" id="filter-year-items">
-                <!-- JS で動的生成 -->
-              </div>
-            </div>
-
-            <!-- Awards only toggle -->
-            <div class="filter-group">
-              <label class="filter-toggle">
-                <input type="checkbox" id="filter-awards-only">
-                <span data-i18n="works.filter_awards_only">受賞作品のみ</span>
-              </label>
-            </div>
-
-            <button class="btn btn--ghost filter-reset" id="filter-reset">
-              フィルタをリセット
-            </button>
-          </div>
-        </aside>
-
-        <!-- Works area -->
-        <div>
-          <!-- Sort toolbar -->
-          <div class="works-toolbar">
-            <div></div>
-            <div class="works-toolbar__sort">
-              <label for="sort-select" data-i18n="works.sort">並び順</label>
-              <select id="sort-select">
-                <option value="newest" data-i18n="works.sort_newest">新しい順</option>
-                <option value="oldest" data-i18n="works.sort_oldest">古い順</option>
-                <option value="title"  data-i18n="works.sort_title">タイトル順</option>
-              </select>
+            <!-- Gallery grid -->
+            <div class="works-gallery" id="works-gallery" aria-live="polite">
+              <div class="loading-spinner" aria-label="読み込み中"></div>
             </div>
           </div>
 
-          <!-- Gallery grid -->
-          <div class="works-gallery" id="works-gallery" aria-live="polite">
-            <div class="loading-spinner" aria-label="読み込み中"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="site-footer__inner">
-        <p class="site-footer__copy">
-          <span data-i18n="footer.copyright">© 2026 金子 真理. All rights reserved.</span>
-        </p>
-        <nav class="site-footer__links" aria-label="フッターナビゲーション">
-          <a class="site-footer__link" href="index.html#about"   data-i18n="nav.about">自己紹介</a>
-          <a class="site-footer__link" href="index.html#skills"  data-i18n="nav.skills">スキル</a>
-          <a class="site-footer__link" href="works.html"         data-i18n="nav.works">作品</a>
-          <a class="site-footer__link" href="index.html#contact" data-i18n="nav.contact">連絡先</a>
-        </nav>
-        <div class="site-footer__social" aria-label="ソーシャルリンク">
-          <a class="site-footer__link" href="https://github.com/Planetalize" target="_blank" rel="noopener">GitHub</a>
-          <a class="site-footer__link" href="mailto:hitowa1100@gmail.com">Email</a>
         </div>
       </div>
-    </div>
-  </footer>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="site-footer__inner">
+          <p class="site-footer__copy">
+            <span data-i18n="footer.copyright">© 2026 金子 真理. All rights reserved.</span>
+          </p>
+          <nav class="site-footer__links" aria-label="フッターナビゲーション">
+            <a class="site-footer__link" href="index.html#about"   data-i18n="nav.about">自己紹介</a>
+            <a class="site-footer__link" href="index.html#skills"  data-i18n="nav.skills">スキル</a>
+            <a class="site-footer__link" href="works.html"         data-i18n="nav.works">作品</a>
+            <a class="site-footer__link" href="index.html#contact" data-i18n="nav.contact">連絡先</a>
+          </nav>
+          <div class="site-footer__social" aria-label="ソーシャルリンク">
+            <a class="site-footer__link" href="https://github.com/Planetalize" target="_blank" rel="noopener">GitHub</a>
+            <a class="site-footer__link" href="mailto:hitowa1100@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    </div><!-- /.shell__main -->
+  </div><!-- /.shell -->
 
   <!-- Work detail modal -->
   <dialog class="modal" id="work-modal" aria-labelledby="modal-title">

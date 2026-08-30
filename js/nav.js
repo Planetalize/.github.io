@@ -84,7 +84,7 @@ function initDrawer() {
 /* ── スクロールスパイ ── */
 function initScrollSpy() {
   const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('.site-nav__link');
+  const navLinks = document.querySelectorAll('.sidebar__link, .drawer__nav-link');
 
   if (!sections.length || !navLinks.length) return;
 
