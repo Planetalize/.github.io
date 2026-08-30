@@ -7,7 +7,7 @@
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   border-radius: var(--radius-md);
-  border: 2px solid transparent;
+  border: 2px solid var(--ink-900);
   cursor: pointer;
   transition: background var(--duration-fast) var(--ease-out),
               color var(--duration-fast) var(--ease-out),
@@ -18,41 +18,43 @@
   text-decoration: none;
 }
 
+/* 押すと影のぶんだけ沈む（版ズレ印刷のような手触り） */
 .btn:active {
-  transform: translateY(1px);
+  transform: translate(3px, 3px);
+  box-shadow: none !important;
 }
 
 .btn--primary {
-  background: var(--color-accent);
-  color: var(--color-text-inverse);
-  border-color: var(--color-accent);
-}
-
-.btn--primary:hover {
-  background: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
+  background: var(--ink-900);
+  color: var(--gold-400);
   box-shadow: var(--shadow-md);
 }
 
+.btn--primary:hover {
+  background: var(--color-accent);
+  box-shadow: 6px 6px 0 var(--ink-a35);
+}
+
 .btn--outline {
-  background: transparent;
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  background: var(--cream);
+  color: var(--ink-900);
+  box-shadow: var(--shadow-md);
 }
 
 .btn--outline:hover {
-  background: var(--color-accent-soft);
+  background: var(--gold-200);
+  box-shadow: 6px 6px 0 var(--ink-a35);
 }
 
 .btn--ghost {
   background: transparent;
-  color: var(--color-text-secondary);
-  border-color: var(--color-border);
+  color: var(--ink-900);
+  border-color: var(--ink-900);
 }
 
 .btn--ghost:hover {
-  background: var(--color-bg-muted);
-  color: var(--color-text);
+  background: var(--ink-900);
+  color: var(--gold-400);
 }
 
 .btn--sm {
@@ -68,10 +70,11 @@
 /* ── Work Card ── */
 .work-card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: var(--border-hard);
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
+  box-shadow: var(--shadow-md);
   transition: box-shadow var(--duration-base) var(--ease-out),
               transform var(--duration-base) var(--ease-out);
   text-align: left;
@@ -80,16 +83,30 @@
   flex-direction: column;
 }
 
-.work-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+.work-card:hover,
+.work-card:focus-visible {
+  box-shadow: var(--shadow-xl);
+  transform: translate(-3px, -3px);
 }
 
 .work-card__thumb {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--color-bg-muted);
+  border-bottom: var(--border-hard);
   position: relative;
+}
+
+/* 画像未設定のときに出るハッチ */
+.work-card__thumb:not(:has(img))::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--ink-a12) 0 4px,
+    transparent 4px 16px
+  );
 }
 
 .work-card__thumb img {
@@ -117,12 +134,16 @@
   position: absolute;
   top: var(--space-3);
   left: var(--space-3);
-  background: var(--color-warning);
-  color: #fff;
+  background: var(--ink-900);
+  color: var(--gold-400);
+  font-family: var(--font-mono);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
   padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
 }
 
 .work-card__body {
@@ -166,16 +187,21 @@
   padding: var(--space-1) var(--space-3);
   font-size: var(--fs-xs);
   font-family: var(--font-mono);
-  background: var(--color-bg-muted);
-  color: var(--color-text-secondary);
+  background: var(--gold-200);
+  color: var(--ink-900);
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--ink-900);
+}
+
+.tag--ink {
+  background: var(--ink-900);
+  color: var(--gold-400);
 }
 
 /* ── Modal ── */
 dialog.modal {
   padding: 0;
-  border: none;
+  border: var(--border-hard);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   max-width: 1024px;
@@ -194,7 +220,7 @@ dialog.modal::backdrop {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-6) var(--space-8);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: var(--border-hard);
   position: sticky;
   top: 0;
   background: var(--color-bg);
@@ -272,8 +298,9 @@ dialog.modal::backdrop {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
-  border: none;
+  background: var(--cream);
+  color: var(--ink-900);
+  border: var(--border-hard);
   border-radius: var(--radius-full);
   width: 36px;
   height: 36px;
@@ -288,7 +315,7 @@ dialog.modal::backdrop {
 }
 
 .slideshow__btn:hover {
-  background: #fff;
+  background: var(--gold-400);
 }
 
 .slideshow__btn--prev { left: var(--space-3); }
@@ -304,18 +331,18 @@ dialog.modal::backdrop {
 }
 
 .slideshow__dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
+  background: transparent;
+  border: 2px solid var(--ink-900);
   cursor: pointer;
   padding: 0;
   transition: background var(--duration-fast);
 }
 
 .slideshow__dot.is-active {
-  background: #fff;
+  background: var(--ink-900);
 }
 
 .slideshow__no-image {
@@ -426,17 +453,27 @@ dialog.modal::backdrop {
   align-items: center;
   gap: var(--space-2);
   position: relative;
+  width: 4.5rem;
 }
 
+/* 各ロゴはクリームのタイルに載せる（金地に直接置くと沈むため） */
 .skill-icon__img {
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  padding: 0.6rem;
   object-fit: contain;
-  transition: transform var(--duration-base) var(--ease-out);
+  background: var(--cream);
+  border: var(--border-hard);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
 }
 
 .skill-icon:hover .skill-icon__img {
-  transform: translateY(-2px);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
 }
 
 .skill-icon__label {
@@ -458,9 +495,10 @@ dialog.modal::backdrop {
   align-items: center;
   gap: var(--space-1);
   padding: var(--space-1) var(--space-3);
-  background: var(--color-warning);
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--gold-400);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   border-radius: var(--radius-full);
+  border: 1px solid var(--ink-900);
 }

@@ -107,8 +107,8 @@
     "github": "GitHub",
     "itchio": "itch.io",
     "no_screenshots": "No screenshots available",
-    "solo": "Solo project",
-    "team": "Team project ({{size}} members)"
+    "team_solo": "Solo project",
+    "team_team": "Team project ({{size}} members)"
   },
   "contact": {
     "heading": "Contact",

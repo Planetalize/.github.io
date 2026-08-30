@@ -1,0 +1,502 @@
+/* ═══════════════════════════════════════════════════════════
+   decor.css — 装飾レイヤー
+
+   ・流れる背景模様      .pattern
+   ・スクロールする帯    .tape
+   ・画像差し込み枠      .frame
+   ・小物装飾            .eyebrow / .rule / .stamp / .marker / .pop
+
+   模様は「タイル1枚ぶんだけ background-position をずらす」ことで
+   継ぎ目なくループさせている。速度は --pattern-speed で上書き可。
+   prefers-reduced-motion 時は base.css 側で停止し、静止した模様
+   として残る（消えはしない）。
+   ═══════════════════════════════════════════════════════════ */
+
+
+/* ────────────────────────────────────────
+   1. Pattern — 流れる背景模様
+   ──────────────────────────────────────── */
+
+/*
+  模様の本体を描くのは .pattern::before。
+  外枠より一回り大きく取り、transform で「タイル1枚ぶん」動かしてループする。
+  background-position ではなく transform を使うのは、そちらだと毎フレーム
+  塗り直しになるため。transform なら合成だけで済み、全画面に敷いても軽い。
+*/
+.pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pattern::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2 * var(--pattern-tile));
+  background-repeat: repeat;
+}
+
+/* 模様の上にコンテンツを乗せるための土台 */
+.has-pattern {
+  position: relative;
+  isolation: isolate;
+}
+
+.has-pattern > .container,
+.has-pattern > .pattern-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 濃さ ── */
+.pattern--faint { --pattern-color: var(--ink-a08); }
+.pattern--bold  { --pattern-color: var(--ink-a20); }
+.pattern--ink   { --pattern-color: var(--ink-a35); }
+
+/* ── 速さ ── */
+.pattern--slow { --pattern-speed: 55s; }
+.pattern--fast { --pattern-speed: 11s; }
+
+/* ── 停止 ── */
+.pattern--still::before { animation: none !important; }
+
+/* ── 縁をなじませるマスク（外枠に掛けるので位置は素直） ── */
+.pattern--fade {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+
+.pattern--vignette {
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
+          mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 100%);
+}
+
+/* ── ① 斜めストライプ（横に流れる） ──
+   45deg の縞は水平に tile×√2 ずらすと元の位置にぴたりと重なる */
+.pattern--stripe { --pattern-tile: 22px; }
+
+.pattern--stripe::before {
+  inset: calc(-3 * var(--pattern-tile));
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--pattern-color) 0 3px,
+    transparent 3px var(--pattern-tile)
+  );
+  animation: pattern-stripe var(--pattern-speed) linear infinite;
+}
+
+@keyframes pattern-stripe {
+  to { transform: translateX(calc(var(--pattern-tile) * 1.41421356)); }
+}
+
+/* ── ② ドットグリッド（斜めに流れる） ── */
+.pattern--dots { --pattern-tile: 26px; }
+
+.pattern--dots::before {
+  background-image: radial-gradient(
+    circle at center,
+    var(--pattern-color) 1.7px,
+    transparent 1.8px
+  );
+  background-size: var(--pattern-tile) var(--pattern-tile);
+  animation: pattern-diag var(--pattern-speed) linear infinite;
+}
+
+/* ── ③ 方眼グリッド（斜めに流れる） ── */
+.pattern--grid { --pattern-tile: 34px; }
+
+.pattern--grid::before {
+  background-image:
+    linear-gradient(to right,  var(--pattern-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pattern-color) 1px, transparent 1px);
+  background-size: var(--pattern-tile) var(--pattern-tile);
+  animation: pattern-diag var(--pattern-speed) linear infinite;
+}
+
+/* ── ④ 市松模様（斜めに流れる） ── */
+.pattern--checker { --pattern-tile: 40px; }
+
+.pattern--checker::before {
+  background-image: conic-gradient(
+    var(--pattern-color) 0 25%,
+    transparent          0 50%,
+    var(--pattern-color) 0 75%,
+    transparent          0
+  );
+  background-size: var(--pattern-tile) var(--pattern-tile);
+  animation: pattern-diag var(--pattern-speed) linear infinite;
+}
+
+@keyframes pattern-diag {
+  to { transform: translate(var(--pattern-tile), var(--pattern-tile)); }
+}
+
+/* ── ⑤ 走査線（下に流れる） ── */
+.pattern--scan { --pattern-tile: 7px; }
+
+.pattern--scan::before {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--pattern-color) 0 1px,
+    transparent 1px var(--pattern-tile)
+  );
+  animation: pattern-scan var(--pattern-speed) linear infinite;
+}
+
+@keyframes pattern-scan {
+  to { transform: translateY(var(--pattern-tile)); }
+}
+
+/* ── ⑥ 集中線／放射（ゆっくり回る） ──
+   回転で角が欠けないよう、外枠の対角線を覆う大きさに広げる */
+.pattern--rays { --pattern-speed: 150s; }
+
+.pattern--rays::before {
+  inset: -75%;
+  background-image: repeating-conic-gradient(
+    from 0deg,
+    var(--pattern-color) 0deg 5deg,
+    transparent          5deg 13deg
+  );
+  animation: pattern-spin var(--pattern-speed) linear infinite;
+}
+
+@keyframes pattern-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── ⑦ 紙目（静止・重ねて使う質感） ── */
+.pattern--grain {
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+}
+
+.pattern--grain::before {
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+/* ── インク塗りセクションの上では模様も金色に反転させる ── */
+.section--ink .pattern,
+.site-footer .pattern {
+  --pattern-color: rgba(248, 204, 55, 0.14);
+}
+
+/* ── ページ全体に敷く固定レイヤー ── */
+.page-deco {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+/* ────────────────────────────────────────
+   2. Tape — スクロールする帯
+   ──────────────────────────────────────── */
+
+.tape {
+  --tape-speed: 38s;
+  overflow: hidden;
+  background: var(--ink-900);
+  color: var(--gold-400);
+  border-block: var(--border-hard);
+  padding-block: var(--space-3);
+  user-select: none;
+}
+
+.tape--tilt {
+  transform: rotate(-1.2deg) scaleX(1.06);
+}
+
+/*
+  傾けた帯は左右にはみ出すので、外側の .tape-band で切り落として
+  ページに横スクロールが出ないようにする。上下の余白は傾きぶんの逃げ。
+*/
+.tape-band {
+  overflow: hidden;
+  padding-block: var(--space-12);
+}
+
+.tape--gold {
+  background: var(--gold-400);
+  color: var(--ink-900);
+}
+
+.tape__group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.tape__track {
+  display: flex;
+  width: max-content;
+  animation: tape-run var(--tape-speed) linear infinite;
+}
+
+/* 中身をちょうど2回並べ、半分ぶん動かして継ぎ目を消す */
+@keyframes tape-run {
+  to { transform: translateX(-50%); }
+}
+
+.tape:hover .tape__track {
+  animation-play-state: paused;
+}
+
+.tape__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-inline: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tape__item::after {
+  content: "\25C6";
+  font-size: 0.7em;
+  opacity: 0.7;
+}
+
+
+/* ────────────────────────────────────────
+   3. Frame — 画像差し込み枠
+   ──────────────────────────────────────── */
+
+/*
+  画像が無いうちは枠だけ置いておけば、ハッチ模様＋ラベルの
+  プレースホルダーが出る。あとから .frame__img を入れるだけで
+  差し替わる（プレースホルダーは :has() で自動的に消える）。
+
+    <figure class="frame frame--16x9 frame--pop" data-label="DeathBombing">
+      <img class="frame__img" src="assets/images/works/db/hero.jpg" alt="">
+    </figure>
+*/
+
+.frame {
+  position: relative;
+  aspect-ratio: var(--frame-ratio, 16 / 9);
+  overflow: hidden;
+  margin: 0;
+  background: var(--gold-600);
+  border: var(--border-hard);
+  border-radius: var(--radius-md);
+}
+
+.frame--16x9 { --frame-ratio: 16 / 9; }
+.frame--4x3  { --frame-ratio: 4 / 3;  }
+.frame--21x9 { --frame-ratio: 21 / 9; }
+.frame--3x4  { --frame-ratio: 3 / 4;  }
+.frame--1x1  { --frame-ratio: 1 / 1;  }
+.frame--free { --frame-ratio: auto; aspect-ratio: auto; }
+
+.frame__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame__img--contain {
+  object-fit: contain;
+  padding: var(--space-3);
+  background: var(--cream);
+}
+
+/* ── プレースホルダー（画像が無いときだけ出る） ── */
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--ink-a12) 0 4px,
+    transparent 4px 16px
+  );
+}
+
+.frame::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: var(--space-4);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.frame:has(.frame__img)::before,
+.frame:has(.frame__img)::after {
+  content: none;
+}
+
+/* ── 見た目のバリエーション ── */
+.frame--pop  { box-shadow: var(--shadow-lg); }
+.frame--ring { outline: 2px solid var(--ink-900); outline-offset: 5px; }
+.frame--round { border-radius: var(--radius-full); }
+
+.frame--soft {
+  border-color: var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+
+/* ── ズーム演出 ── */
+.frame--zoom .frame__img {
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+a:hover      .frame--zoom .frame__img,
+button:hover .frame--zoom .frame__img,
+.frame--zoom:hover .frame__img {
+  transform: scale(1.04);
+}
+
+/* ── キャプション付き ── */
+.frame-figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.frame-figure__cap {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-secondary);
+}
+
+/* ── アイコン用の小さな枠 ── */
+.icon-slot {
+  --frame-ratio: 1 / 1;
+  width: 2.25rem;
+  flex-shrink: 0;
+  border-width: 1px;
+  border-radius: var(--radius-sm);
+}
+
+.icon-slot::after {
+  font-size: 0.5rem;
+  letter-spacing: 0;
+}
+
+/* ── セクション用の横長バナー枠 ── */
+.banner-slot {
+  --frame-ratio: 21 / 9;
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .banner-slot { --frame-ratio: 3 / 1; }
+}
+
+
+/* ────────────────────────────────────────
+   4. 小物装飾
+   ──────────────────────────────────────── */
+
+/* ── 見出しの上に付く小ラベル ── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  background: currentColor;
+}
+
+/* ── 区切り線（中央に菱形） ── */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--ink-a35);
+}
+
+.rule::before,
+.rule::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: currentColor;
+}
+
+.rule__mark {
+  color: var(--ink-900);
+  font-size: var(--fs-sm);
+}
+
+/* ── 傾いたスタンプ ── */
+.stamp {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: var(--ink-900);
+  color: var(--gold-400);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transform: rotate(-2.5deg);
+}
+
+.stamp--accent  { background: var(--color-accent); color: var(--gold-400); }
+.stamp--outline { background: transparent; color: var(--ink-900); border: var(--border-hard); }
+
+/* ── マーカー（文字の後ろを塗る） ── */
+.marker {
+  background-image: linear-gradient(transparent 62%, var(--ink-a20) 62%);
+  padding-inline: 0.15em;
+}
+
+/* ── ハードシャドウ付きの箱 ── */
+.pop {
+  background: var(--color-surface);
+  border: var(--border-hard);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/*
+  スクロールで浮かび上がる。<html class="js"> が付いた環境でだけ
+  隠すので、JS が読めなくても内容が消えることはない。
+*/
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease-out),
+              transform 600ms var(--ease-out);
+}
+
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
+}

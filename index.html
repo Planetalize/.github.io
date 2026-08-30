@@ -26,17 +26,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <!-- JS が動く環境でだけ .reveal を隠す（JS 無効時に内容が消えないように） -->
+  <script>document.documentElement.classList.add('js');</script>
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/decor.css">
   <link rel="stylesheet" href="css/utilities.css">
 
   <title>金子 真理 | ポートフォリオ</title>
 </head>
 <body>
+
+  <!-- ページ全体に敷く模様（金地の上をゆっくり流れる） -->
+  <div class="page-deco pattern pattern--dots pattern--faint pattern--slow" aria-hidden="true"></div>
 
   <!-- Skip link -->
   <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
@@ -44,7 +51,11 @@
   <!-- Header -->
   <header class="site-header" id="site-header">
     <div class="site-header__inner container">
-      <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">Mari Kaneko</a>
+      <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">
+        <!-- ロゴ画像を使う場合はこの span の中に <img src="..." alt=""> を入れる -->
+        <span class="site-header__mark" aria-hidden="true"></span>
+        Mari Kaneko
+      </a>
 
       <nav class="site-nav" aria-label="グローバルナビゲーション">
         <a class="site-nav__link" href="#about"   data-i18n="nav.about">About</a>
@@ -89,7 +100,12 @@
 
     <!-- ── Hero ── -->
     <section class="hero" id="hero" aria-label="ヒーロー">
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <!-- 背景装飾: 放射線 → ドット → 紙目 の3枚重ね -->
+      <div class="hero__deco" aria-hidden="true">
+        <div class="pattern pattern--rays pattern--faint"></div>
+        <div class="pattern pattern--dots pattern--bold pattern--vignette"></div>
+        <div class="pattern pattern--grain"></div>
+      </div>
       <div class="hero__content">
         <p class="hero__role en" data-i18n="hero.role">Game Programmer</p>
         <h1 class="hero__name">金子 真理</h1>
@@ -105,20 +121,43 @@
       </div>
     </section>
 
+    <div class="tape-band">
+      <div class="tape tape--tilt" aria-hidden="true">
+        <div class="tape__track">
+          <div class="tape__group">
+            <span class="tape__item">C++ / DirectX11</span>
+            <span class="tape__item">Game Programmer</span>
+            <span class="tape__item">HAL Tokyo</span>
+            <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
+            <span class="tape__item">Make Something That Moves</span>
+          </div>
+          <div class="tape__group">
+            <span class="tape__item">C++ / DirectX11</span>
+            <span class="tape__item">Game Programmer</span>
+            <span class="tape__item">HAL Tokyo</span>
+            <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
+            <span class="tape__item">Make Something That Moves</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ── About ── -->
-    <section class="section" id="about" aria-labelledby="about-heading">
+    <section class="section has-pattern" id="about" aria-labelledby="about-heading">
+      <div class="pattern pattern--grid pattern--faint pattern--fade" aria-hidden="true"></div>
       <div class="container">
-        <h2 class="section__heading" id="about-heading">
+        <h2 class="section__heading reveal" id="about-heading">
           <span>Profile</span>
           <span data-i18n="about.heading">自己紹介</span>
         </h2>
 
-        <div class="about__inner">
+        <div class="about__inner reveal">
           <!-- Left: photo + bio -->
           <div class="about__photo-wrap">
-            <div class="about__photo-placeholder" aria-label="プロフィール写真（準備中）">
-              <span>Photo</span>
-            </div>
+            <!-- 写真を入れるときは下の img のコメントを外してパスを差し替える -->
+            <figure class="frame frame--1x1 frame--round about__photo-frame" data-label="Photo">
+              <!-- <img class="frame__img" src="assets/images/profile.jpg" alt="金子 真理"> -->
+            </figure>
             <p class="about__bio" data-i18n="about.bio">
               ゲームが好きで、プログラミングも好きです。C++とDirectX11でのネイティブゲーム開発を軸としながら、Webやツールなどあらゆるものをコードで作れるのが楽しいです。「動くものを作る」を信条に、毎日コツコツ積み上げています。
             </p>
@@ -200,9 +239,10 @@
     </section>
 
     <!-- ── Skills ── -->
-    <section class="section section--muted" id="skills" aria-labelledby="skills-heading">
+    <section class="section section--muted has-pattern" id="skills" aria-labelledby="skills-heading">
+      <div class="pattern pattern--stripe pattern--faint pattern--fade" aria-hidden="true"></div>
       <div class="container">
-        <h2 class="section__heading" id="skills-heading">
+        <h2 class="section__heading reveal" id="skills-heading">
           <span>Skills</span>
           <span data-i18n="skills.heading">スキル</span>
         </h2>
@@ -373,12 +413,18 @@
     </section>
 
     <!-- ── Works (excerpt) ── -->
-    <section class="section" id="works" aria-labelledby="works-heading">
+    <section class="section section--edged has-pattern" id="works" aria-labelledby="works-heading">
+      <div class="pattern pattern--checker pattern--faint pattern--fade" aria-hidden="true"></div>
       <div class="container">
-        <h2 class="section__heading" id="works-heading">
+        <h2 class="section__heading reveal" id="works-heading">
           <span>Works</span>
           <span data-i18n="works.heading">作品</span>
         </h2>
+
+        <!-- セクションバナー: 画像を入れるときは img のコメントを外す -->
+        <figure class="frame banner-slot frame--pop reveal" data-label="Works Key Visual">
+          <!-- <img class="frame__img" src="assets/images/works-banner.jpg" alt=""> -->
+        </figure>
 
         <div class="works-grid" id="featured-works">
           <div class="loading-spinner" aria-label="読み込み中"></div>
@@ -391,9 +437,10 @@
     </section>
 
     <!-- ── Contact ── -->
-    <section class="section section--muted" id="contact" aria-labelledby="contact-heading">
+    <section class="section section--ink has-pattern" id="contact" aria-labelledby="contact-heading">
+      <div class="pattern pattern--dots" aria-hidden="true"></div>
       <div class="container container--narrow">
-        <h2 class="section__heading" id="contact-heading">
+        <h2 class="section__heading reveal" id="contact-heading">
           <span>Contact</span>
           <span data-i18n="contact.heading">連絡先</span>
         </h2>
@@ -402,7 +449,7 @@
           お問い合わせは下記のリンクよりお願いいたします。
         </p>
 
-        <div class="contact__links">
+        <div class="contact__links reveal">
           <a class="contact__link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub（新しいタブで開く）">
             <img class="contact__link-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="" loading="lazy">
             <span class="contact__link-label en">GitHub</span>

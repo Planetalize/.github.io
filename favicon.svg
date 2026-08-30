@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Mari Kaneko">
+  <!-- ヘッダーのロゴマークと同じ意匠: 黒インクの角丸に金の菱形 -->
+  <rect width="32" height="32" rx="6" fill="#17130A"/>
+  <rect x="16" y="6" width="14.14" height="14.14" rx="1.5"
+        transform="rotate(45 16 6)" fill="#F8CC37"/>
+</svg>

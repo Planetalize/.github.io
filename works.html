@@ -26,12 +26,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <!-- JS が動く環境でだけ .reveal を隠す（JS 無効時に内容が消えないように） -->
+  <script>document.documentElement.classList.add('js');</script>
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/decor.css">
   <link rel="stylesheet" href="css/works.css">
   <link rel="stylesheet" href="css/utilities.css">
 
@@ -39,13 +43,20 @@
 </head>
 <body>
 
+  <!-- ページ全体に敷く模様（金地の上をゆっくり流れる） -->
+  <div class="page-deco pattern pattern--dots pattern--faint pattern--slow" aria-hidden="true"></div>
+
   <!-- Skip link -->
   <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
 
   <!-- Header (共通) -->
   <header class="site-header" id="site-header">
     <div class="site-header__inner container">
-      <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">Mari Kaneko</a>
+      <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">
+        <!-- ロゴ画像を使う場合はこの span の中に <img src="..." alt=""> を入れる -->
+        <span class="site-header__mark" aria-hidden="true"></span>
+        Mari Kaneko
+      </a>
 
       <nav class="site-nav" aria-label="グローバルナビゲーション">
         <a class="site-nav__link" href="index.html#about"   data-i18n="nav.about">About</a>
@@ -90,6 +101,7 @@
 
     <!-- Page header -->
     <div class="works-page__header">
+      <div class="pattern pattern--stripe pattern--faint" aria-hidden="true"></div>
       <div class="container">
         <nav class="works-page__breadcrumb" aria-label="パンくずリスト">
           <a href="index.html">Home</a>
@@ -100,6 +112,28 @@
         <p class="works-page__count" id="works-count" aria-live="polite">
           <span data-i18n="works.count" data-i18n-vars='{"count":"…"}'>全 … 件</span>
         </p>
+      </div>
+    </div>
+
+
+    <div class="tape-band">
+      <div class="tape tape--tilt" aria-hidden="true">
+        <div class="tape__track">
+          <div class="tape__group">
+            <span class="tape__item">C++ / DirectX11</span>
+            <span class="tape__item">Game Programmer</span>
+            <span class="tape__item">HAL Tokyo</span>
+            <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
+            <span class="tape__item">Make Something That Moves</span>
+          </div>
+          <div class="tape__group">
+            <span class="tape__item">C++ / DirectX11</span>
+            <span class="tape__item">Game Programmer</span>
+            <span class="tape__item">HAL Tokyo</span>
+            <span class="tape__item">つくる、あそぶ、みせる、楽しむ</span>
+            <span class="tape__item">Make Something That Moves</span>
+          </div>
+        </div>
       </div>
     </div>
 

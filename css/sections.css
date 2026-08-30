@@ -13,18 +13,20 @@
   overflow: hidden;
   padding: var(--space-20) var(--space-6);
   padding-top: calc(var(--header-height-sp) + var(--space-20));
-  /* CSS-only subtle gradient background */
+  isolation: isolate;
+  border-bottom: var(--border-hard);
+  /* 金地に光を落とす。模様は .pattern レイヤーが重なる */
   background:
-    radial-gradient(ellipse 70% 60% at 70% 30%, var(--color-accent-soft) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, #EFF6FF 0%, transparent 60%),
-    var(--color-bg);
+    radial-gradient(ellipse 65% 55% at 50% 38%, var(--gold-200) 0%, transparent 70%),
+    var(--gold-400);
 }
 
-#hero-canvas {
+/* 背景模様を重ねる箱（ヒーローの中だけで完結させる） */
+.hero__deco {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  z-index: 0;
+  overflow: hidden;
   pointer-events: none;
 }
 
@@ -39,12 +41,16 @@
 }
 
 .hero__role {
-  font-family: var(--font-sans-en);
-  font-size: var(--fs-sm);
+  display: inline-block;
+  padding: var(--space-1) var(--space-4);
+  background: var(--ink-900);
+  color: var(--gold-400);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wide);
+  letter-spacing: var(--ls-wider);
   text-transform: uppercase;
-  color: var(--color-accent);
+  border-radius: var(--radius-full);
   opacity: 0;
   animation: fade-up var(--duration-slow) var(--ease-out) 0.1s forwards;
 }
@@ -54,6 +60,8 @@
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
+  /* 金地に対して版ズレ気味の影を落とす */
+  text-shadow: 4px 4px 0 var(--ink-a12);
   opacity: 0;
   animation: fade-up var(--duration-slow) var(--ease-out) 0.25s forwards;
 }
@@ -84,10 +92,11 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
-  color: var(--color-text-muted);
+  color: var(--ink-500);
   font-size: var(--fs-xs);
-  font-family: var(--font-sans-en);
-  letter-spacing: var(--ls-wide);
+  font-family: var(--font-mono);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
   animation: bounce 2s infinite var(--ease-in-out) 1.5s;
 }
 
@@ -138,26 +147,10 @@
   gap: var(--space-5);
 }
 
-.about__photo {
+/* プロフィール写真は decor.css の .frame を丸く使う */
+.about__photo-frame {
   width: 200px;
-  height: 200px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  border: 3px solid var(--color-border);
-  background: var(--color-bg-muted);
-}
-
-.about__photo-placeholder {
-  width: 200px;
-  height: 200px;
-  border-radius: var(--radius-full);
-  background: var(--color-bg-muted);
-  border: 3px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-muted);
-  font-size: var(--fs-sm);
+  box-shadow: var(--shadow-lg);
 }
 
 .about__bio {
@@ -174,11 +167,15 @@
 }
 
 .about__info-table tr {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--ink-a20);
 }
 
 .about__info-table tr:first-child {
-  border-top: 1px solid var(--color-border);
+  border-top: var(--border-hard);
+}
+
+.about__info-table tr:last-child {
+  border-bottom: var(--border-hard);
 }
 
 .about__info-table th {
@@ -223,12 +220,15 @@
 }
 
 @media (min-width: 768px) {
-  .about__inner {
-    grid-template-columns: 30% 1fr;
-  }
-
   .about__bio {
     text-align: left;
+  }
+}
+
+/* 2カラムにするのは本文が窮屈にならない幅から */
+@media (min-width: 1024px) {
+  .about__inner {
+    grid-template-columns: minmax(220px, 28%) 1fr;
   }
 }
 
@@ -242,13 +242,23 @@
 }
 
 .skills__category-name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--fs-sm);
-  font-family: var(--font-sans-en);
+  font-family: var(--font-mono);
   font-weight: var(--fw-semibold);
-  color: var(--color-text-secondary);
-  letter-spacing: var(--ls-wide);
+  color: var(--ink-900);
+  letter-spacing: var(--ls-wider);
   text-transform: uppercase;
   margin-bottom: var(--space-5);
+  padding-bottom: var(--space-2);
+  border-bottom: var(--border-hard);
+}
+
+.skills__category-name::before {
+  content: "\25B8";
+  color: var(--color-accent);
 }
 
 .skills__icons {
@@ -261,8 +271,10 @@
 .skills__levels {
   margin-top: var(--space-12);
   padding: var(--space-8);
-  background: var(--color-bg-muted);
+  background: var(--cream);
+  border: var(--border-hard);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .skills__levels-heading {
@@ -285,21 +297,22 @@
 }
 
 .skill-level__bar {
-  height: 6px;
-  background: var(--color-border);
+  height: 10px;
+  background: var(--gold-200);
+  border: 1px solid var(--ink-900);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .skill-level__fill {
   height: 100%;
-  background: var(--color-accent);
+  background: var(--ink-900);
   border-radius: var(--radius-full);
 }
 
 .skill-level__stars {
   font-size: var(--fs-xs);
-  color: var(--color-warning);
+  color: var(--color-accent);
   white-space: nowrap;
   letter-spacing: 2px;
 }
@@ -335,7 +348,7 @@
 
 .works__see-all {
   text-align: center;
-  margin-top: var(--space-10);
+  margin-top: var(--space-12);
 }
 
 /* ════════════════════════════════
@@ -362,18 +375,30 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-5);
-  border: 1px solid var(--color-border);
+  background: var(--cream);
+  border: var(--border-hard);
   border-radius: var(--radius-lg);
-  transition: border-color var(--duration-fast),
-              box-shadow var(--duration-fast),
-              transform var(--duration-fast);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--duration-fast),
+              transform var(--duration-fast),
+              background var(--duration-fast);
   min-width: 100px;
 }
 
 .contact__link:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  background: var(--gold-300);
+  box-shadow: var(--shadow-lg);
+  transform: translate(-3px, -3px);
+}
+
+/* インク面では枠と影を金色に反転させる */
+.section--ink .contact__link {
+  border-color: var(--gold-400);
+  box-shadow: 5px 5px 0 rgba(248, 204, 55, 0.30);
+}
+
+.section--ink .contact__link:hover {
+  box-shadow: 7px 7px 0 rgba(248, 204, 55, 0.45);
 }
 
 .contact__link-icon {
@@ -391,32 +416,26 @@
 
 .contact__link-label {
   font-size: var(--fs-xs);
-  font-family: var(--font-sans-en);
-  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  color: var(--ink-900);
   font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+}
+
+.contact__link-icon--svg {
+  color: var(--ink-900);
 }
 
 /* ── Skill icon (補足) ── */
+/* 画像が落ちたときの代替表示（alt テキストがタイル内に出る） */
 .skill-icon--fallback .skill-icon__img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--color-bg-muted);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
   font-size: var(--fs-xs);
   font-family: var(--font-mono);
-  color: var(--color-text-muted);
+  color: var(--ink-500);
   text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .skill-icon--fallback .skill-icon__img {
-    width: 48px;
-    height: 48px;
-  }
 }
 
 /* ── Skill level モバイル対応 ── */
