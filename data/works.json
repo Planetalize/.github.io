@@ -9,6 +9,7 @@
       "ja": "Papers, Please 風ファンタジーシミュレーション",
       "en": "Papers, Please-inspired fantasy simulation"
     },
+    "category": "game",
     "year": 2026,
     "period": {
       "ja": "2026年4月〜",
@@ -18,9 +19,20 @@
     "thumbnail": "assets/images/thumbs/guild.jpg",
     "screenshots": [],
     "video": null,
-    "tech": ["C++", "DirectX11", "Visual Studio 2022"],
-    "libraries": ["ImGui", "DirectXTK", "nlohmann/json"],
-    "tags": ["simulation", "document-verification"],
+    "tech": [
+      "C++",
+      "DirectX11",
+      "Visual Studio 2022"
+    ],
+    "libraries": [
+      "ImGui",
+      "DirectXTK",
+      "nlohmann/json"
+    ],
+    "tags": [
+      "simulation",
+      "document-verification"
+    ],
     "teamType": "solo",
     "teamSize": 1,
     "role": {

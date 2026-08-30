@@ -4,10 +4,14 @@
     "description": "ゲームプログラマー志望、金子真理のポートフォリオサイトです。C++/DirectX11によるネイティブゲーム開発を中心に、幅広い実装経験を紹介しています。"
   },
   "nav": {
+    "top": "トップ",
     "about": "自己紹介",
     "skills": "スキル",
     "works": "作品",
-    "contact": "連絡先"
+    "chara": "キャラクター",
+    "note": "制作ノート",
+    "contact": "連絡先",
+    "other": "その他"
   },
   "hero": {
     "role": "Game Programmer",

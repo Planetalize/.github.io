@@ -20,6 +20,9 @@ function initReveal() {
     return;
   }
 
+  // スクロールするのはビューポートではなくシートの内側
+  const root = document.querySelector('.sheet__body');
+
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach(entry => {
@@ -28,7 +31,7 @@ function initReveal() {
         obs.unobserve(entry.target); // 一度出したら監視をやめる
       });
     },
-    { rootMargin: '0px 0px -12% 0px', threshold: 0.05 }
+    { root, rootMargin: '0px 0px -8% 0px', threshold: 0.02 }
   );
 
   targets.forEach(el => observer.observe(el));

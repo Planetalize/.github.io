@@ -4,10 +4,14 @@
     "description": "Portfolio of Mari Kaneko, an aspiring game programmer specializing in native game development with C++/DirectX11."
   },
   "nav": {
+    "top": "Top",
     "about": "About",
     "skills": "Skills",
     "works": "Works",
-    "contact": "Contact"
+    "chara": "Characters",
+    "note": "Notes",
+    "contact": "Contact",
+    "other": "Other"
   },
   "hero": {
     "role": "Game Programmer",

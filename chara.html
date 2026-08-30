@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="金子真理の制作物一覧。ゲーム・イラスト・ツールをカテゴリごとに掲載しています。">
+  <meta name="description" content="自作ゲームに登場するキャラクターの紹介です。">
   <meta name="author" content="金子 真理">
 
   <!-- OGP -->
-  <meta property="og:title" content="Works | 金子 真理 ポートフォリオ">
-  <meta property="og:description" content="金子真理の制作物一覧。ゲーム・イラスト・ツールをカテゴリごとに掲載しています。">
+  <meta property="og:title" content="Chara | 金子 真理 ポートフォリオ">
+  <meta property="og:description" content="自作ゲームに登場するキャラクターの紹介です。">
   <meta property="og:image" content="https://Planetalize.github.io/assets/images/ogp.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="css/works.css">
   <link rel="stylesheet" href="css/utilities.css">
 
-  <title>Works | 金子 真理 ポートフォリオ</title>
+  <title>Chara | 金子 真理 ポートフォリオ</title>
 </head>
 <body>
 
@@ -60,11 +60,11 @@
           <span class="drawer__nav-en">ABOUT</span>
           <span class="drawer__nav-ja" data-i18n="nav.about">自己紹介</span>
         </a>
-        <a class="drawer__nav-link is-active" href="works.html" aria-current="page">
+        <a class="drawer__nav-link" href="works.html">
           <span class="drawer__nav-en">WORKS</span>
           <span class="drawer__nav-ja" data-i18n="nav.works">作品</span>
         </a>
-        <a class="drawer__nav-link" href="chara.html">
+        <a class="drawer__nav-link is-active" href="chara.html" aria-current="page">
           <span class="drawer__nav-en">CHARA</span>
           <span class="drawer__nav-ja" data-i18n="nav.chara">キャラクター</span>
         </a>
@@ -103,8 +103,8 @@
       <nav class="sidebar__nav" aria-label="グローバルナビゲーション">
           <a class="sidebar__link" href="index.html">TOP</a>
           <a class="sidebar__link" href="about.html">ABOUT</a>
-          <a class="sidebar__link is-active" href="works.html" aria-current="page">WORKS</a>
-          <a class="sidebar__link" href="chara.html">CHARA</a>
+          <a class="sidebar__link" href="works.html">WORKS</a>
+          <a class="sidebar__link is-active" href="chara.html" aria-current="page">CHARA</a>
           <a class="sidebar__link" href="note.html">NOTE</a>
           <a class="sidebar__link" href="contact.html">CONTACT</a>
           <a class="sidebar__link" href="other.html">OTHER</a>
@@ -142,76 +142,45 @@
 
     <main class="sheet" id="main">
       <header class="sheet__head">
-        <h1 class="page-title">WORKS</h1>
-        <div class="tabs" role="tablist" aria-label="カテゴリ">
-          <button class="tab is-active" role="tab" aria-selected="true"  data-category="all">すべて</button>
-          <button class="tab"           role="tab" aria-selected="false" data-category="game">ゲーム</button>
-          <button class="tab"           role="tab" aria-selected="false" data-category="illust">イラスト</button>
-          <button class="tab"           role="tab" aria-selected="false" data-category="tool">ツール</button>
-        </div>
+        <h1 class="page-title">CHARA</h1>
       </header>
 
       <div class="sheet__body">
-        <div class="works-toolbar">
-          <p class="works-toolbar__count" id="works-count" aria-live="polite">
-            <span data-i18n="works.count" data-i18n-vars='{"count":"…"}'>全 … 件</span>
-          </p>
-          <div class="works-toolbar__sort">
-            <label for="sort-select" data-i18n="works.sort">並び順</label>
-            <select id="sort-select">
-              <option value="newest" data-i18n="works.sort_newest">新しい順</option>
-              <option value="oldest" data-i18n="works.sort_oldest">古い順</option>
-              <option value="title"  data-i18n="works.sort_title">タイトル順</option>
-            </select>
-          </div>
-        </div>
+        <p class="lead">自作ゲームに登場するキャラクターたち。</p>
 
-        <!-- 細かい絞り込みは畳んでおく（横幅を食わないように） -->
-        <details class="filter-details">
-          <summary data-i18n="works.filter_heading">絞り込み</summary>
-          <div class="filter-details__body">
-            <div class="filter-group" id="filter-tech-group">
-              <p class="filter-group__label" data-i18n="works.filter_tech">技術</p>
-              <div class="filter-group__items filter-group__items--inline" id="filter-tech-items">
-                <!-- JS で動的生成 -->
-              </div>
+        <div class="chara-grid">
+          <article class="chara-card">
+            <figure class="frame frame--3x4 frame--zoom" data-label="Character 1">
+              <!-- <img class="frame__img" src="assets/images/chara/xxx.png" alt=""> -->
+            </figure>
+            <div class="chara-card__body">
+              <h2 class="chara-card__name">キャラクター名</h2>
+              <p class="chara-card__role">所属 / 肩書き</p>
+              <p class="chara-card__desc">ここに設定や紹介文が入ります。</p>
             </div>
+          </article>
 
-            <div class="filter-group">
-              <p class="filter-group__label" data-i18n="works.filter_team">制作形態</p>
-              <div class="filter-group__items filter-group__items--inline">
-                <label class="filter-radio">
-                  <input type="radio" name="filter-team" value="all" checked> <span data-i18n="works.filter_all">すべて</span>
-                </label>
-                <label class="filter-radio">
-                  <input type="radio" name="filter-team" value="solo"> <span data-i18n="works.team_solo">個人制作</span>
-                </label>
-                <label class="filter-radio">
-                  <input type="radio" name="filter-team" value="team"> <span data-i18n="works.team_team">チーム制作</span>
-                </label>
-              </div>
+          <article class="chara-card">
+            <figure class="frame frame--3x4 frame--zoom" data-label="Character 2">
+              <!-- <img class="frame__img" src="assets/images/chara/xxx.png" alt=""> -->
+            </figure>
+            <div class="chara-card__body">
+              <h2 class="chara-card__name">キャラクター名</h2>
+              <p class="chara-card__role">所属 / 肩書き</p>
+              <p class="chara-card__desc">ここに設定や紹介文が入ります。</p>
             </div>
+          </article>
 
-            <div class="filter-group" id="filter-year-group">
-              <p class="filter-group__label" data-i18n="works.filter_year">年度</p>
-              <div class="filter-group__items filter-group__items--inline" id="filter-year-items">
-                <!-- JS で動的生成 -->
-              </div>
+          <article class="chara-card">
+            <figure class="frame frame--3x4 frame--zoom" data-label="Character 3">
+              <!-- <img class="frame__img" src="assets/images/chara/xxx.png" alt=""> -->
+            </figure>
+            <div class="chara-card__body">
+              <h2 class="chara-card__name">キャラクター名</h2>
+              <p class="chara-card__role">所属 / 肩書き</p>
+              <p class="chara-card__desc">ここに設定や紹介文が入ります。</p>
             </div>
-
-            <div class="filter-group">
-              <label class="filter-toggle">
-                <input type="checkbox" id="filter-awards-only">
-                <span data-i18n="works.filter_awards_only">受賞作品のみ</span>
-              </label>
-            </div>
-
-            <button class="btn btn--ghost btn--sm filter-reset" id="filter-reset">フィルタをリセット</button>
-          </div>
-        </details>
-
-        <div class="works-gallery" id="works-gallery" aria-live="polite">
-          <div class="loading-spinner" aria-label="読み込み中"></div>
+          </article>
         </div>
       </div>
     </main>

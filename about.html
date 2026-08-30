@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="金子真理のプロフィールと、扱える技術の一覧です。">
+  <meta name="author" content="金子 真理">
+
+  <!-- OGP -->
+  <meta property="og:title" content="About | 金子 真理 ポートフォリオ">
+  <meta property="og:description" content="金子真理のプロフィールと、扱える技術の一覧です。">
+  <meta property="og:image" content="https://Planetalize.github.io/assets/images/ogp.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- JS が動く環境でだけ .reveal を隠す（JS 無効時に内容が消えないように） -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/decor.css">
+  <link rel="stylesheet" href="css/works.css">
+  <link rel="stylesheet" href="css/utilities.css">
+
+  <title>About | 金子 真理 ポートフォリオ</title>
+</head>
+<body>
+
+  <!-- ページ全体に敷く模様（金地の上をゆっくり流れる） -->
+  <div class="page-deco pattern pattern--dots pattern--faint pattern--slow" aria-hidden="true"></div>
+
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
+
+  <!-- SHELL:DRAWER:START -->
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="ナビゲーションメニュー">
+    <div class="drawer__overlay" id="drawer-overlay"></div>
+    <div class="drawer__panel">
+      <button class="drawer__close" aria-label="メニューを閉じる">✕</button>
+      <nav class="drawer__nav" aria-label="モバイルナビゲーション">
+        <a class="drawer__nav-link" href="index.html">
+          <span class="drawer__nav-en">TOP</span>
+          <span class="drawer__nav-ja">トップ</span>
+        </a>
+        <a class="drawer__nav-link is-active" href="about.html" aria-current="page">
+          <span class="drawer__nav-en">ABOUT</span>
+          <span class="drawer__nav-ja" data-i18n="nav.about">自己紹介</span>
+        </a>
+        <a class="drawer__nav-link" href="works.html">
+          <span class="drawer__nav-en">WORKS</span>
+          <span class="drawer__nav-ja" data-i18n="nav.works">作品</span>
+        </a>
+        <a class="drawer__nav-link" href="chara.html">
+          <span class="drawer__nav-en">CHARA</span>
+          <span class="drawer__nav-ja" data-i18n="nav.chara">キャラクター</span>
+        </a>
+        <a class="drawer__nav-link" href="note.html">
+          <span class="drawer__nav-en">NOTE</span>
+          <span class="drawer__nav-ja" data-i18n="nav.note">制作ノート</span>
+        </a>
+        <a class="drawer__nav-link" href="contact.html">
+          <span class="drawer__nav-en">CONTACT</span>
+          <span class="drawer__nav-ja" data-i18n="nav.contact">連絡先</span>
+        </a>
+        <a class="drawer__nav-link" href="other.html">
+          <span class="drawer__nav-en">OTHER</span>
+          <span class="drawer__nav-ja" data-i18n="nav.other">その他</span>
+        </a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="言語切替">
+        <button class="lang-toggle__btn" data-lang="ja" aria-pressed="true">JA</button>
+        <button class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+  <!-- SHELL:DRAWER:END -->
+
+  <div class="shell">
+
+    <!-- SHELL:SIDEBAR:START -->
+    <aside class="sidebar" aria-label="サイドナビゲーション">
+      <a class="sidebar__brand" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">
+        <!-- ロゴ画像を使う場合はこの span の中に <img src="..." alt=""> を入れる -->
+        <span class="brand-mark brand-mark--lg" aria-hidden="true"></span>
+        <span class="sidebar__brand-name">Mari Kaneko</span>
+        <span class="sidebar__brand-role" data-i18n="hero.role">Game Programmer</span>
+      </a>
+
+      <nav class="sidebar__nav" aria-label="グローバルナビゲーション">
+          <a class="sidebar__link" href="index.html">TOP</a>
+          <a class="sidebar__link is-active" href="about.html" aria-current="page">ABOUT</a>
+          <a class="sidebar__link" href="works.html">WORKS</a>
+          <a class="sidebar__link" href="chara.html">CHARA</a>
+          <a class="sidebar__link" href="note.html">NOTE</a>
+          <a class="sidebar__link" href="contact.html">CONTACT</a>
+          <a class="sidebar__link" href="other.html">OTHER</a>
+      </nav>
+
+      <div class="sidebar__foot">
+        <div class="lang-toggle" role="group" aria-label="言語切替">
+          <button class="lang-toggle__btn" data-lang="ja" aria-pressed="true">JA</button>
+          <button class="lang-toggle__btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <div class="sidebar__social">
+          <a class="sidebar__social-link" href="https://github.com/Planetalize" target="_blank" rel="noopener">GitHub</a>
+          <a class="sidebar__social-link" href="mailto:hitowa1100@gmail.com">Email</a>
+        </div>
+        <p class="sidebar__copy" data-i18n="footer.copyright_short">© 2026 金子 真理</p>
+      </div>
+    </aside>
+    <!-- SHELL:SIDEBAR:END -->
+
+    <!-- SHELL:HEADER:START -->
+    <header class="site-header" id="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html" aria-label="金子 真理 ポートフォリオ トップ">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Mari Kaneko
+        </a>
+        <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </header>
+    <!-- SHELL:HEADER:END -->
+
+    <main class="sheet" id="main">
+      <header class="sheet__head">
+        <h1 class="page-title">ABOUT</h1>
+      </header>
+
+      <div class="sheet__body">
+        <section class="section" aria-label="プロフィール">
+          <div class="about__inner reveal">
+            <!-- Left: photo + bio -->
+            <div class="about__photo-wrap">
+              <!-- 写真を入れるときは下の img のコメントを外してパスを差し替える -->
+              <figure class="frame frame--1x1 frame--round about__photo-frame" data-label="Photo">
+                <!-- <img class="frame__img" src="assets/images/profile.jpg" alt="金子 真理"> -->
+              </figure>
+              <p class="about__bio" data-i18n="about.bio">
+                ゲームが好きで、プログラミングも好きです。C++とDirectX11でのネイティブゲーム開発を軸としながら、Webやツールなどあらゆるものをコードで作れるのが楽しいです。「動くものを作る」を信条に、毎日コツコツ積み上げています。
+              </p>
+            </div>
+
+            <!-- Right: info table -->
+            <div class="about__info-wrap">
+              <table class="about__info-table">
+                <tbody>
+                  <tr>
+                    <th data-i18n="about.label_name">氏名</th>
+                    <td><span data-i18n="about_data.name">金子 真理</span>（<span data-i18n="about_data.name_kana">かねこ まり</span>）</td>
+                  </tr>
+                  <tr>
+                    <th data-i18n="about.label_school">学校</th>
+                    <td><span data-i18n="about_data.school">HAL東京</span> <span data-i18n="about_data.department">ゲーム4年制学科プログラマーコース</span> <span data-i18n="about_data.year">3</span>年次</td>
+                  </tr>
+                  <tr>
+                    <th data-i18n="about.label_graduation">卒業予定</th>
+                    <td data-i18n="about_data.graduation">2028年3月</td>
+                  </tr>
+                  <tr>
+                    <th data-i18n="about.label_desired_job">志望職種</th>
+                    <td data-i18n="about_data.desired_job">ゲームプログラマー</td>
+                  </tr>
+                  <tr>
+                    <th data-i18n="about.label_strengths">得意分野</th>
+                    <td data-i18n="about_data.strengths">ネイティブゲーム開発（C++/DirectX11）、Web開発（PHP/MySQL/JS）</td>
+                  </tr>
+                  <tr id="awards-row">
+                    <th data-i18n="about.label_awards">受賞歴</th>
+                    <td data-i18n="about_data.awards">複数受賞（詳細調整中）</td>
+                  </tr>
+                  <tr>
+                    <th data-i18n="about.label_certifications">資格</th>
+                    <td data-i18n="about_data.certifications">基本情報技術者試験</td>
+                  </tr>
+                  <tr>
+                    <th data-i18n="about.label_links">外部リンク</th>
+                    <td>
+                      <div class="about__links">
+                        <a class="about__ext-link" href="https://github.com/Planetalize" target="_blank" rel="noopener" aria-label="GitHub（新しいタブで開く）">
+                          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width="16" height="16" alt="" loading="lazy">
+                          GitHub
+                        </a>
+                        <!-- X（旧 Twitter）: URL 確定後に差し替え -->
+                        <a class="about__ext-link about__ext-link--placeholder" href="#" aria-label="X（準備中）" aria-disabled="true" tabindex="-1" style="opacity:.4;pointer-events:none;">
+                          <img src="https://cdn.simpleicons.org/x/1F2937" width="16" height="16" alt="" loading="lazy">
+                          X
+                        </a>
+                        <!-- Zenn: URL 確定後に差し替え -->
+                        <a class="about__ext-link about__ext-link--placeholder" href="#" aria-label="Zenn（準備中）" aria-disabled="true" tabindex="-1" style="opacity:.4;pointer-events:none;">
+                          <img src="https://cdn.simpleicons.org/zenn/3EA8FF" width="16" height="16" alt="" loading="lazy">
+                          Zenn
+                        </a>
+                        <!-- YouTube: URL 確定後に差し替え -->
+                        <a class="about__ext-link about__ext-link--placeholder" href="#" aria-label="YouTube（準備中）" aria-disabled="true" tabindex="-1" style="opacity:.4;pointer-events:none;">
+                          <img src="https://cdn.simpleicons.org/youtube/FF0000" width="16" height="16" alt="" loading="lazy">
+                          YouTube
+                        </a>
+                        <a class="about__ext-link" href="mailto:hitowa1100@gmail.com" aria-label="メールを送る">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                          Email
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="about__cta">
+                <a class="btn btn--outline" href="assets/resume.pdf" download data-i18n="hero.cta_resume">
+                  履歴書をダウンロード
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="skills-heading">
+          <h2 class="section__heading reveal" id="skills-heading">
+            <span>Skills</span>
+            <span data-i18n="skills.heading">スキル</span>
+          </h2>
+          <div class="skills__categories" id="skills-categories">
+
+            <!-- Programming Languages -->
+            <div class="skill-category">
+              <h3 class="skills__category-name" data-i18n="skills.categories.languages">Programming Languages</h3>
+              <ul class="skills__icons" role="list">
+                <li class="skill-icon" title="C">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" loading="lazy">
+                  <span class="skill-icon__label">C</span>
+                </li>
+                <li class="skill-icon" title="C++">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" loading="lazy">
+                  <span class="skill-icon__label">C++</span>
+                </li>
+                <li class="skill-icon" title="C#">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" loading="lazy">
+                  <span class="skill-icon__label">C#</span>
+                </li>
+                <li class="skill-icon" title="JavaScript">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
+                  <span class="skill-icon__label">JavaScript</span>
+                </li>
+                <li class="skill-icon" title="PHP">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" loading="lazy">
+                  <span class="skill-icon__label">PHP</span>
+                </li>
+                <li class="skill-icon" title="HTML5">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
+                  <span class="skill-icon__label">HTML</span>
+                </li>
+                <li class="skill-icon" title="CSS3">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
+                  <span class="skill-icon__label">CSS</span>
+                </li>
+                <li class="skill-icon" title="SQL">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy">
+                  <span class="skill-icon__label">SQL</span>
+                </li>
+                <li class="skill-icon" title="Python">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy">
+                  <span class="skill-icon__label">Python</span>
+                </li>
+                <li class="skill-icon" title="XML">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xml/xml-original.svg" alt="XML" loading="lazy">
+                  <span class="skill-icon__label">XML</span>
+                </li>
+                <li class="skill-icon" title="JSON">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg" alt="JSON" loading="lazy">
+                  <span class="skill-icon__label">JSON</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Graphics / Game Dev -->
+            <div class="skill-category">
+              <h3 class="skills__category-name" data-i18n="skills.categories.game_dev">Graphics / Game Dev</h3>
+              <ul class="skills__icons" role="list">
+                <li class="skill-icon" title="DirectX 11">
+                  <img class="skill-icon__img" src="assets/images/icons/directX11.png" alt="DirectX 11" loading="lazy">
+                  <span class="skill-icon__label">DirectX 11</span>
+                </li>
+                <li class="skill-icon" title="Visual Studio 2022">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio 2022" loading="lazy">
+                  <span class="skill-icon__label">Visual Studio</span>
+                </li>
+                <li class="skill-icon" title="Unity">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" loading="lazy">
+                  <span class="skill-icon__label">Unity</span>
+                </li>
+                <li class="skill-icon" title="Unreal Engine">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg" alt="Unreal Engine" loading="lazy">
+                  <span class="skill-icon__label">Unreal Engine</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Web / Backend -->
+            <div class="skill-category">
+              <h3 class="skills__category-name" data-i18n="skills.categories.web">Web / Backend</h3>
+              <ul class="skills__icons" role="list">
+                <li class="skill-icon" title="PHP">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" loading="lazy">
+                  <span class="skill-icon__label">PHP</span>
+                </li>
+                <li class="skill-icon" title="MySQL">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
+                  <span class="skill-icon__label">MySQL</span>
+                </li>
+                <li class="skill-icon" title="Vanilla JavaScript">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="Vanilla JavaScript" loading="lazy">
+                  <span class="skill-icon__label">Vanilla JS</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tools / Workflow -->
+            <div class="skill-category">
+              <h3 class="skills__category-name" data-i18n="skills.categories.tools">Tools / Workflow</h3>
+              <ul class="skills__icons" role="list">
+                <li class="skill-icon" title="Git">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" loading="lazy">
+                  <span class="skill-icon__label">Git</span>
+                </li>
+                <li class="skill-icon" title="GitHub">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" loading="lazy">
+                  <span class="skill-icon__label">GitHub</span>
+                </li>
+                <li class="skill-icon" title="Visual Studio Code">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="Visual Studio Code" loading="lazy">
+                  <span class="skill-icon__label">VS Code</span>
+                </li>
+                <li class="skill-icon" title="Claude Code">
+                  <img class="skill-icon__img" src="https://cdn.simpleicons.org/anthropic/1F2937" alt="Claude Code" loading="lazy">
+                  <span class="skill-icon__label">Claude Code</span>
+                </li>
+                <li class="skill-icon" title="SourceTree">
+                  <img class="skill-icon__img" src="https://cdn.simpleicons.org/sourcetree/0052CC" alt="SourceTree" loading="lazy">
+                  <span class="skill-icon__label">SourceTree</span>
+                </li>
+                <li class="skill-icon" title="GitHub Copilot">
+                  <img class="skill-icon__img" src="https://cdn.simpleicons.org/githubcopilot/1F2937" alt="GitHub Copilot" loading="lazy">
+                  <span class="skill-icon__label">Copilot</span>
+                </li>
+                <li class="skill-icon" title="OpenAI Codex">
+                  <img class="skill-icon__img" src="https://cdn.simpleicons.org/openai/1F2937" alt="OpenAI Codex" loading="lazy">
+                  <span class="skill-icon__label">Codex</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Asset Creation -->
+            <div class="skill-category">
+              <h3 class="skills__category-name" data-i18n="skills.categories.assets">Asset Creation</h3>
+              <ul class="skills__icons" role="list">
+                <li class="skill-icon" title="Blender">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg" alt="Blender" loading="lazy">
+                  <span class="skill-icon__label">Blender</span>
+                </li>
+                <li class="skill-icon" title="Aseprite">
+                  <img class="skill-icon__img" src="https://cdn.simpleicons.org/aseprite/1F2937" alt="Aseprite" loading="lazy">
+                  <span class="skill-icon__label">Aseprite</span>
+                </li>
+                <li class="skill-icon" title="Adobe Photoshop">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg" alt="Adobe Photoshop" loading="lazy">
+                  <span class="skill-icon__label">Photoshop</span>
+                </li>
+                <li class="skill-icon" title="Adobe Illustrator">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg" alt="Adobe Illustrator" loading="lazy">
+                  <span class="skill-icon__label">Illustrator</span>
+                </li>
+                <li class="skill-icon" title="Autodesk Maya">
+                  <img class="skill-icon__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maya/maya-original.svg" alt="Autodesk Maya" loading="lazy">
+                  <span class="skill-icon__label">Maya</span>
+                </li>
+                <li class="skill-icon" title="CLIP STUDIO PAINT">
+                  <img class="skill-icon__img" src="assets/images/icons/Clipstudiopaint.png" alt="CLIP STUDIO PAINT" loading="lazy">
+                  <span class="skill-icon__label">CLIP STUDIO</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </main>
+  </div><!-- /.shell -->
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

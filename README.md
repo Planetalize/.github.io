@@ -7,6 +7,7 @@
 - HTML5 / CSS3（カスタムプロパティ） / Vanilla JavaScript (ES2020+)
 - データ管理: JSON（works.json, i18n/*.json）
 - ホスティング: GitHub Pages
+- ビルド不要。HTML をそのまま編集して push すれば公開される
 
 ## ローカル確認
 
@@ -22,22 +23,29 @@ node tools/dev-server.mjs
 ## ディレクトリ構成
 
 ```
-├── index.html        トップページ
-├── works.html        作品ギャラリー
-├── 404.html          エラーページ
+├── index.html        TOP
+├── about.html        ABOUT（プロフィール＋スキル）
+├── works.html        WORKS（カテゴリタブ付きの作品一覧）
+├── chara.html        CHARA（自作キャラ紹介）
+├── note.html         NOTE（制作ノート・技術記事）
+├── contact.html      CONTACT
+├── other.html        OTHER（ミニゲーム・雑多なリンク）
+├── 404.html
 ├── css/
 │   ├── tokens.css    デザイントークン（金地 #F8CC37 ＋ 黒インク）
 │   ├── base.css      リセット
-│   ├── layout.css    ヘッダー / フッター / セクション土台
+│   ├── layout.css    シェル / サイドバー / シート
 │   ├── components.css ボタン / カード / モーダル
-│   ├── sections.css  各セクション
-│   ├── decor.css     装飾（流れる模様・帯・画像差し込み枠）
-│   ├── works.css     works.html 専用
+│   ├── sections.css  各ページの中身
+│   ├── decor.css     装飾（流れる模様・画像差し込み枠）
+│   ├── works.css     WORKS ページ専用
 │   └── utilities.css
 ├── js/               nav.js, decor.js
 ├── data/             works.json, i18n/
 ├── assets/           画像・PDF等
-└── tools/            dev-server.mjs（ローカル確認用）
+└── tools/
+    ├── dev-server.mjs   ローカル確認用サーバー
+    └── sync-shell.mjs   全ページ共通の枠を揃える
 ```
 
 ## デザインの決まりごと
@@ -49,7 +57,7 @@ node tools/dev-server.mjs
 | 用途 | トークン | 値 |
 | --- | --- | --- |
 | 背景（基本 / 濃い / 最も濃い） | `--gold-400` / `--gold-500` / `--gold-600` | `#F8CC37` / `#F2C222` / `#E7B41A` |
-| カード面 | `--cream` | `#FFFBEE` |
+| シート・カード面 | `--cream` | `#FFFBEE` |
 | 本文・枠線・影 | `--ink-900` | `#17130A` |
 | 差し色 | `--color-accent` | `#8A2013` |
 
@@ -58,32 +66,47 @@ node tools/dev-server.mjs
 
 ## 画面構成
 
-ページは `.shell` = サイドバー ＋ 本文カラム の2枚構成。
+**ページ全体はスクロールしない。** 金地の枠の中にサイドバーとクリームの
+シートが並び、中身が多いページは**シートの内側だけ**がスクロールする。
 
 ```html
 <div class="shell">
   <aside class="sidebar"> ... </aside>          <!-- 1024px 以上でのみ表示 -->
-  <div class="shell__main">
-    <header class="site-header"> ... </header>  <!-- 1024px 未満でのみ表示 -->
-    <main id="main"> ... </main>
-    <footer class="site-footer"> ... </footer>
-  </div>
+  <header class="site-header"> ... </header>    <!-- 1024px 未満でのみ表示 -->
+  <main class="sheet" id="main">
+    <header class="sheet__head">
+      <h1 class="page-title">TOP</h1>           <!-- 「」は CSS が付ける -->
+    </header>
+    <div class="sheet__body"> ... </div>        <!-- ここだけスクロールする -->
+  </main>
 </div>
 ```
 
-- **1024px 以上**: 左にインクのサイドバーが常駐する（`position: sticky` で貼り付く）。ヘッダーは消える
+- **1024px 以上**: 左に金地のサイドバー。ナビは黒く塗った札で、現在地だけ
+  クリームに反転してシートと呼応する
 - **1024px 未満**: サイドバーが消え、ヘッダー＋ハンバーガー／ドロワーに切り替わる
-- 現在地は `.sidebar__link.is-active` が金のブロックに反転して示す。
-  `js/nav.js` のスクロールスパイが `.sidebar__link, .drawer__nav-link` に `is-active` を付ける
+- 縦に中央寄せしたいページ（TOP / CONTACT）は `sheet__body--center` を付ける
 - **サイドバーを右に置きたいときは、`css/layout.css` の `.shell` の
   `flex-direction` を `row-reverse` にするだけ**
+
+### 共通の枠を直すとき
+
+サイドバー・ドロワー・ヘッダーは全ページに同じものが埋め込んである
+（JS 無しでも表示され、検索エンジンにも拾われるように）。マーカーで
+囲んであるので、**`index.html` だけ直して同期スクリプトを流す**。
+
+```bash
+node tools/sync-shell.mjs
+```
+
+現在地のハイライトはスクリプトがページごとに付け直す。
+`--check` を付けるとズレの検出だけ行う（書き換えない）。
 
 ## 装飾のしくみ（css/decor.css）
 
 ### 流れる背景模様
 
-セクションに `has-pattern` を付け、中に `.pattern` を1枚置く。
-`.container` は自動的に模様より前面に出る。
+要素に `has-pattern` を付け、中に `.pattern` を1枚置く。
 
 ```html
 <section class="section has-pattern">
@@ -123,38 +146,48 @@ node tools/dev-server.mjs
 - 比率: `frame--16x9` / `--4x3` / `--21x9` / `--3x4` / `--1x1` / `--free`
 - 見た目: `frame--pop`（ハードシャドウ） / `--ring`（二重枠） / `--round`（丸） / `--soft`（控えめ）
 - 動き: `frame--zoom`（ホバーで拡大）
-- 用途別: `banner-slot`（セクション用の横長） / `icon-slot`（リンクアイコン用の小さな正方形）
+- 用途別: `banner-slot`（横長） / `icon-slot`（小さな正方形）
 
-現在この枠が置いてあるのは、ヘッダーのロゴマーク・プロフィール写真・
-Works セクションのバナーの3か所。増やすときは上と同じ書き方で置く。
-
-### スクロールする帯
-
-`.tape-band` で囲むのを忘れないこと（傾けた帯が横スクロールを生むため）。
-中身は同じ並びをちょうど2回置く。
-
-```html
-<div class="tape-band">
-  <div class="tape tape--tilt" aria-hidden="true">
-    <div class="tape__track">
-      <div class="tape__group"> <span class="tape__item">...</span> </div>
-      <div class="tape__group"> <span class="tape__item">...</span> </div>
-    </div>
-  </div>
-</div>
-```
+いま枠が置いてあるのは、ヘッダーとサイドバーのロゴマーク、ABOUT の
+プロフィール写真、CHARA の3枠、OTHER の2枠。
 
 ### その他
 
-`.eyebrow` `.rule` `.stamp` `.marker` `.pop`、
-スクロールで浮かび上がる `.reveal`（`js/decor.js` が `.is-in` を付ける）。
+`.eyebrow` `.rule` `.stamp` `.marker` `.pop`、スクロールする帯 `.tape`
+（`.tape-band` で囲むこと）、浮かび上がる `.reveal`（`js/decor.js` が
+`.is-in` を付ける。監視対象は `.sheet__body`）。
+
+## works.json
+
+作品1件の形。`category` が WORKS ページのタブに対応する。
+
+| キー | 値 |
+| --- | --- |
+| `category` | `game` / `illust` / `tool`（タブの `data-category` と一致させる） |
+| `teamType` | `solo` / `team` |
+| `thumbnail` | カードのサムネイル画像パス |
+| `screenshots` | 詳細で並べる画像パスの配列 |
 
 ## 未実装
 
-`js/` にあるのは `nav.js`（ヘッダー・ドロワー・スクロールスパイ）と
-`decor.js`（スクロール演出）のみ。以下は HTML の受け皿だけある状態:
+`js/` にあるのは `nav.js`（ドロワー）と `decor.js`（スクロール演出）のみ。
+以下は HTML の受け皿だけある状態:
 
-- 作品カードの描画（`#featured-works` / `#works-gallery` がスピナーのまま）
-- 作品詳細の表示、スクリーンショットのスライドショー
-- 技術・年度フィルタ、ソート
+- 作品カードの描画（`#works-gallery` がスピナーのまま）
+- カテゴリタブ（`.tab`）とフィルタ・ソートの動作
+- 作品詳細（**モーダルではなくページ遷移で作る**）
+  - モーダルの HTML は全ページから外した。
+    ただし `css/components.css` の `.modal__*` と `.slideshow` は
+    詳細ページのスクリーンショット表示にそのまま流用できるので残してある
 - JA / EN 切り替え（`data-i18n` を差し替える処理）
+
+## 未用意のアセット
+
+参照だけしていて実体がないもの。
+
+```
+assets/resume.pdf                履歴書
+assets/images/ogp.jpg            OGP画像
+assets/images/thumbs/guild.jpg   作品サムネイル
+apple-touch-icon.png
+```

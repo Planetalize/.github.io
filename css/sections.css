@@ -1,9 +1,10 @@
 /* ════════════════════════════════
    Hero
 ════════════════════════════════ */
+/* TOP ページの主役。シートいっぱいに広がる */
 .hero {
-  min-height: 100vh;
-  max-height: 900px;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,13 +12,10 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: var(--space-20) var(--space-6);
-  padding-top: calc(var(--header-height-sp) + var(--space-20));
+  padding: var(--space-10) var(--space-6);
   isolation: isolate;
-  border-bottom: var(--border-hard);
-  /* 金地に光を落とす。模様は .pattern レイヤーが重なる */
   background:
-    radial-gradient(ellipse 65% 55% at 50% 38%, var(--gold-200) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 55% at 50% 42%, var(--gold-200) 0%, transparent 70%),
     var(--gold-400);
 }
 
@@ -124,12 +122,7 @@
   50%       { transform: translateX(-50%) translateY(8px); }
 }
 
-/* PC ではヘッダーが消えてサイドバーになるので、その上余白は不要 */
-@media (min-width: 1024px) {
-  .hero {
-    padding-top: var(--space-20);
-  }
-}
+
 
 /* ════════════════════════════════
    About
@@ -376,7 +369,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-5);
-  background: var(--cream);
+  background: var(--gold-200);
   border: var(--border-hard);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
@@ -466,4 +459,182 @@
     grid-row: 3;
     margin-top: 0;
   }
+}
+
+
+/* ════════════════════════════════
+   共通の小物
+════════════════════════════════ */
+.lead {
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+/* ════════════════════════════════
+   CHARA — 自作キャラ紹介
+════════════════════════════════ */
+.chara-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-6);
+}
+
+.chara-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.chara-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.chara-card__name {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.chara-card__role {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-accent);
+}
+
+.chara-card__desc {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* ════════════════════════════════
+   NOTE — 制作ノート／技術記事
+════════════════════════════════ */
+.note-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.note-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: flex-start;
+  padding: var(--space-5);
+  background: var(--gold-100);
+  border: var(--border-hard);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.note-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translate(-2px, -2px);
+}
+
+.note-item__date {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  color: var(--ink-500);
+}
+
+.note-item__title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.note-item__excerpt {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.note-foot {
+  margin-top: var(--space-8);
+  font-size: var(--fs-sm);
+  color: var(--ink-500);
+}
+
+/* ════════════════════════════════
+   OTHER — ミニゲームと雑多なリンク
+════════════════════════════════ */
+.other-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-6);
+}
+
+.other-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.other-card__title {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+}
+
+.other-card__desc {
+  font-size: var(--fs-xs);
+  color: var(--ink-500);
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.link-list a {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.link-list a:hover {
+  color: var(--color-accent-hover);
+}
+
+.is-pending {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-wide);
+  color: var(--ink-500);
+  opacity: 0.6;
+}
+
+/* ════════════════════════════════
+   ドロワー内のナビ（EN + JA の2段）
+════════════════════════════════ */
+.drawer__nav-en {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  color: var(--ink-900);
+}
+
+.drawer__nav-ja {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--ink-500);
+}
+
+.drawer__nav-link.is-active .drawer__nav-en {
+  color: var(--color-accent);
 }

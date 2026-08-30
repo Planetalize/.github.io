@@ -11,10 +11,18 @@ html {
   scroll-behavior: smooth;
 }
 
-/* 金地はページ全体の下地。オーバースクロール時もはみ出さない */
+/*
+  金地はページ全体の下地。
+  ページ自体はスクロールさせず、中身は .sheet の内側だけが動く。
+*/
 html,
 body {
+  height: 100%;
   background-color: var(--color-bg);
+}
+
+body {
+  overflow: hidden;
 }
 
 body {
